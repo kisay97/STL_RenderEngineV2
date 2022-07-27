@@ -4,7 +4,7 @@
 
 namespace STL
 {
-	class SwapChain
+	class ENGINE_API SwapChain
 	{
 	public:
 		SwapChain();
