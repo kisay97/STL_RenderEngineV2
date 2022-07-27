@@ -1,6 +1,8 @@
 #pragma once
 
 #include <Core/Core.h>
+#include "SwapChain.h"
+#include "RenderTargetView.h"
 
 namespace STL
 {
@@ -22,16 +24,17 @@ namespace STL
 		ID3D11DeviceContext* GetContext() const { return context; }
 		ID3D11DeviceContext** GetContextAddressOf() { return &context; }
 		
-		IDXGISwapChain* GetSwapChain() const { return swapChain; }
-		IDXGISwapChain** GetSwapChainAddressOf() { return &swapChain; }
+		IDXGISwapChain* GetSwapChain() { return swapChain.Get(); }
+		IDXGISwapChain** GetSwapChainAddressOf() { return swapChain.GetAddressOf(); }
 
-		ID3D11RenderTargetView* GetRenderTargetView() const { return renderTargetView; }
-		ID3D11RenderTargetView** GetRenderTargetViewAddressOf() { return &renderTargetView; }
+		ID3D11RenderTargetView* GetRenderTargetView() { return renderTargetView.Get(); }
+		ID3D11RenderTargetView** GetRenderTargetViewAddressOf() { return renderTargetView.GetAddressOf(); }
 
 	private:
 		ID3D11Device* device;
 		ID3D11DeviceContext* context;
-		IDXGISwapChain* swapChain;
-		ID3D11RenderTargetView* renderTargetView;
+		//IDXGISwapChain* swapChain;
+		SwapChain swapChain;
+		RenderTargetView renderTargetView;
 	};
 }

@@ -16,7 +16,7 @@ namespace STL
 		);
 
 		virtual ~Game();
-		virtual void Initialize();
+		virtual void Initialize() override;
 
 	private:
 		uint32 vertexByteWidth;
