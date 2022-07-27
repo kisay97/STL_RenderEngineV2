@@ -97,6 +97,7 @@
       <PreprocessorDefinitions>ENGINE_BUILD_DLL;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Source\</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -121,6 +122,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
       <PreprocessorDefinitions>ENGINE_BUILD_DLL;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Source\</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +147,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
       <PreprocessorDefinitions>ENGINE_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Source\</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,6 +172,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
       <PreprocessorDefinitions>ENGINE_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Source\</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -187,18 +191,33 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Renderer\PixelShader.h" />
+    <ClInclude Include="Source\Renderer\Shader.h" />
+    <ClInclude Include="Source\Renderer\Buffer.h" />
+    <ClInclude Include="Source\Device\RenderTargetView.h" />
     <ClInclude Include="Source\Device\DeviceManager.h" />
     <ClInclude Include="Source\Core\Application.h" />
     <ClInclude Include="Source\Core\Core.h" />
     <ClInclude Include="Source\Device\GameTimer.h" />
     <ClInclude Include="Source\Device\Window.h" />
+    <ClInclude Include="Source\Device\SwapChain.h" />
+    <ClInclude Include="Source\Utility\STLException.h" />
+    <ClInclude Include="Source\Renderer\VertexBuffer.h" />
+    <ClInclude Include="Source\Renderer\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Renderer\PixelShader.cpp" />
+    <ClCompile Include="Source\Renderer\Shader.cpp" />
+    <ClCompile Include="Source\Renderer\Buffer.cpp" />
+    <ClCompile Include="Source\Device\RenderTargetView.cpp" />
     <ClCompile Include="Source\Device\DeviceManager.cpp" />
     <ClCompile Include="Source\Core\Application.cpp" />
     <ClCompile Include="Source\Core\Core.cpp" />
     <ClCompile Include="Source\Device\GameTimer.cpp" />
     <ClCompile Include="Source\Device\Window.cpp" />
+    <ClCompile Include="Source\Device\SwapChain.cpp" />
+    <ClCompile Include="Source\Renderer\VertexBuffer.cpp" />
+    <ClCompile Include="Source\Renderer\VertexShader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
