@@ -63,7 +63,7 @@ namespace STL
 
         // 멀티 샘플링 지원 여부 확인.
         uint32 m4xMSAAQuality=0;
-        auto result = device->CheckMultisampleQualityLevels(
+        result = device->CheckMultisampleQualityLevels(
             DXGI_FORMAT_R8G8B8A8_UNORM, 
             4, 
             &m4xMSAAQuality
