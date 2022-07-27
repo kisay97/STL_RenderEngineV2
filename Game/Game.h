@@ -16,5 +16,10 @@ namespace STL
 		);
 
 		virtual ~Game();
+		virtual void Initialize();
+
+	private:
+		uint32 vertexByteWidth;
+		uint32 vertexCount;
 	};
 }

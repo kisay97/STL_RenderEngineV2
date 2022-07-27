@@ -79,7 +79,6 @@ namespace STL
 	
 	LRESULT Application::MessageProcessor(HWND handle, uint32 message, WPARAM wParam, LPARAM lParam)
 	{
-
 		switch (message)
 		{
 		case WM_DESTROY:

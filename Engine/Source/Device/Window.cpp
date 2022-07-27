@@ -16,11 +16,13 @@ namespace STL
 		handle(nullptr)
 	{
 	}
+
 	Window::~Window()
 	{
 		// 창 등록 해제.
 		UnregisterClass(className.c_str(), hInstance);
 	}
+
 	void Window::Initialize()
 	{
         // 창 클래스 설정 및 생성.
@@ -66,6 +68,7 @@ namespace STL
             nullptr         // Additional application data
         );
 
+        // 예외처리.
         if (handle == nullptr)
         {
             throw std::exception("윈도우 생성 실패.");

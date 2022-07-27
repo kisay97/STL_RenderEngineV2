@@ -40,6 +40,7 @@ namespace STL
 
 		std::unique_ptr<Window> mainWindow;
 		std::unique_ptr<DeviceManager> deviceManager;
+
 		float backgroundColor[4];
 	};
 }

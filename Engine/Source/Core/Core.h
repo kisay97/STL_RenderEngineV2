@@ -19,6 +19,7 @@
 #include <Windows.h>
 #include <d3d11.h>			// dx11
 #include <d3dcompiler.h>	// 쉐이더 컴파일/로드
+#include <comdef.h>
 
 #include <vector>
 #include <unordered_map>
