@@ -27,6 +27,7 @@
 #include <memory>			// smart pointer.
 #include <algorithm>
 #include <sstream>			// 문자열 조합에 편리함.
+#include <filesystem>
 
 // 타입 재정의.
 using uint32 = unsigned int;
