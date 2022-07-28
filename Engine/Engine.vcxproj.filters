@@ -72,6 +72,9 @@
     <ClInclude Include="Source\Renderer\IndexBuffer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Source\EngineShader\STLPositionColorShader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\Core.cpp">
@@ -128,9 +131,14 @@
     <ClCompile Include="Source\Renderer\IndexBuffer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Source\EngineShader\STLPositionColorShader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\VertexShader.hlsl" />
     <FxCompile Include="Shader\PixelShader.hlsl" />
+    <FxCompile Include="Shader\PositionColorVertexShader.hlsl" />
+    <FxCompile Include="Shader\PositionColorPixelShader.hlsl" />
   </ItemGroup>
 </Project>

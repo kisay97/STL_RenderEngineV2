@@ -24,4 +24,30 @@ namespace STL
 		{
 		}
 	};
+
+	struct ENGINE_API VertexPositionColor
+	{
+		Vector3f position;
+		Vector3f color;
+
+		VertexPositionColor()
+			: position(), color()
+		{
+		}
+
+		VertexPositionColor(
+			float x, float y, float z,
+			float r, float g, float b)
+			: position(x, y, z), color(r, g, b)
+		{
+		}
+
+		VertexPositionColor(
+			const Vector3f& position,
+			const Vector3f& color)
+			: position(position.x, position.y, position.z),
+			color(color.x, color.y, color.z)
+		{
+		}
+	};
 }

@@ -6,6 +6,7 @@
 #include <Renderer/InputLayout.h>
 #include <EngineShader/STLDefaultShader.h>
 #include <Renderer/IndexBuffer.h>
+#include <EngineShader/STLPositionColorShader.h>
 
 namespace STL 
 {
@@ -27,6 +28,6 @@ namespace STL
 		VertexBuffer vertexBuffer;
 		IndexBuffer indexBuffer;
 		InputLayout inputLayout;
-		STLDefaultShader mainShader;
+		STLPositionColorShader mainShader;
 	};
 }

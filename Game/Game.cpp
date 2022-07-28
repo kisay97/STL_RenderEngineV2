@@ -20,25 +20,33 @@ namespace STL
 		auto device = deviceManager->GetDevice();
 
 		// 정점 버퍼 생성.
-		VertexPosition vertices[] =
+		//VertexPosition vertices[] =
+		//{
+		//	/*VertexPosition(-0.5f, 0.5f, 0.5f),
+		//	VertexPosition(0.5f, -0.5f, 0.5f),
+		//	VertexPosition(-0.5f, -0.5f, 0.5f),
+
+		//	VertexPosition(-0.5f, 0.5f, 0.5f),
+		//	VertexPosition(0.5f, 0.5f, 0.5f),
+		//	VertexPosition(0.5f, -0.5f, 0.5f),*/
+		//	
+		//	// dx는 왼손 좌표계(왼손을 화면에 대고 말았을 때 엄지 방향이 보이는 면)를 사용하기 때문에 점이 오른쪽을 돌면서 그려야 그려짐.
+		//	/*VertexPosition(-0.5f, 0.5f, 0.5f),
+		//	VertexPosition(0.5f, -0.5f, 0.5f),
+		//	VertexPosition(0.5f, 0.5f, 0.5f),*/
+
+		//	VertexPosition(-0.5f, -0.5f, 0.5f),		// 왼쪽 하단.
+		//	VertexPosition(-0.5f, 0.5f, 0.5f),		// 왼쪽 상단.
+		//	VertexPosition(0.5f, 0.5f, 0.5f),		// 오른쪽 상단.
+		//	VertexPosition(0.5f, -0.5f, 0.5f),		// 오른쪽 하단.
+		//};
+
+		VertexPositionColor vertices[] =
 		{
-			/*VertexPosition(-0.5f, 0.5f, 0.5f),
-			VertexPosition(0.5f, -0.5f, 0.5f),
-			VertexPosition(-0.5f, -0.5f, 0.5f),
-
-			VertexPosition(-0.5f, 0.5f, 0.5f),
-			VertexPosition(0.5f, 0.5f, 0.5f),
-			VertexPosition(0.5f, -0.5f, 0.5f),*/
-			
-			// dx는 왼손 좌표계(왼손을 화면에 대고 말았을 때 엄지 방향이 보이는 면)를 사용하기 때문에 점이 오른쪽을 돌면서 그려야 그려짐.
-			/*VertexPosition(-0.5f, 0.5f, 0.5f),
-			VertexPosition(0.5f, -0.5f, 0.5f),
-			VertexPosition(0.5f, 0.5f, 0.5f),*/
-
-			VertexPosition(-0.5f, -0.5f, 0.5f),		// 왼쪽 하단.
-			VertexPosition(-0.5f, 0.5f, 0.5f),		// 왼쪽 상단.
-			VertexPosition(0.5f, 0.5f, 0.5f),		// 오른쪽 상단.
-			VertexPosition(0.5f, -0.5f, 0.5f),		// 오른쪽 하단.
+			VertexPositionColor({-0.5f, -0.5f, 0.5f}, {1.0f, 0.0f, 0.0f}),		// 왼쪽 하단.
+			VertexPositionColor({-0.5f, 0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}),		// 왼쪽 상단.
+			VertexPositionColor({0.5f, 0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}),		// 오른쪽 상단.
+			VertexPositionColor({0.5f, -0.5f, 0.5f}, {1.0f, 0.0f, 0.0f}),		// 오른쪽 하단.
 		};
 
 		vertexBuffer = VertexBuffer(vertices, _countof(vertices), sizeof(vertices[0]));
@@ -56,7 +64,8 @@ namespace STL
 		// 입력 레이아웃 생성.
 		D3D11_INPUT_ELEMENT_DESC layout[] =
 		{
-			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			{ "COLOR", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 }
 		};
 
 		inputLayout.Create(device, layout, _countof(layout), mainShader.GetVertexShaderBuffer());

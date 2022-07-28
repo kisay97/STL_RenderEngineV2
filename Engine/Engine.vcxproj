@@ -210,6 +210,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\Renderer\VertexBuffer.h" />
     <ClInclude Include="Source\Renderer\VertexShader.h" />
     <ClInclude Include="Source\Math\Vector3f.h" />
+    <ClInclude Include="Source\EngineShader\STLPositionColorShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Renderer\IndexBuffer.cpp" />
@@ -230,6 +231,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClCompile Include="Source\Renderer\VertexDeclaration.cpp" />
     <ClCompile Include="Source\Renderer\VertexShader.cpp" />
     <ClCompile Include="Source\Math\Vector3f.cpp" />
+    <ClCompile Include="Source\EngineShader\STLPositionColorShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\PixelShader.hlsl">
@@ -237,6 +239,18 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\PositionColorPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\PositionColorVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
     </FxCompile>
     <FxCompile Include="Shader\VertexShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
