@@ -2,6 +2,9 @@
 
 #include <Core/Core.h>
 #include <Core/Application.h>
+#include <Renderer/VertexBuffer.h>
+#include <Renderer/InputLayout.h>
+#include <EngineShader/STLDefaultShader.h>
 
 namespace STL 
 {
@@ -17,9 +20,11 @@ namespace STL
 
 		virtual ~Game();
 		virtual void Initialize() override;
+		virtual void RenderScene() override;
 
 	private:
-		uint32 vertexByteWidth;
-		uint32 vertexCount;
+		VertexBuffer vertexBuffer;
+		InputLayout inputLayout;
+		STLDefaultShader mainShader;
 	};
 }

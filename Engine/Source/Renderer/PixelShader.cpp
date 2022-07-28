@@ -14,7 +14,7 @@ namespace STL
 	}
 
 	PixelShader::PixelShader(const std::wstring& filename, const std::string& entry, const std::string& profile)
-		: PixelShader(filename, entry, profile)
+		: Shader(filename, entry, profile), pixelShader(nullptr)
 	{
 	}
 
