@@ -191,6 +191,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Renderer\IndexBuffer.h" />
     <ClInclude Include="Source\Renderer\InputLayout.h" />
     <ClInclude Include="Source\EngineShader\STLDefaultShader.h" />
     <ClInclude Include="Source\EngineShader\STLShader.h" />
@@ -211,6 +212,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\Math\Vector3f.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Renderer\IndexBuffer.cpp" />
     <ClCompile Include="Source\Renderer\InputLayout.cpp" />
     <ClCompile Include="Source\EngineShader\STLDefaultShader.cpp" />
     <ClCompile Include="Source\EngineShader\STLShader.cpp" />

@@ -5,6 +5,7 @@
 #include <Renderer/VertexBuffer.h>
 #include <Renderer/InputLayout.h>
 #include <EngineShader/STLDefaultShader.h>
+#include <Renderer/IndexBuffer.h>
 
 namespace STL 
 {
@@ -24,6 +25,7 @@ namespace STL
 
 	private:
 		VertexBuffer vertexBuffer;
+		IndexBuffer indexBuffer;
 		InputLayout inputLayout;
 		STLDefaultShader mainShader;
 	};

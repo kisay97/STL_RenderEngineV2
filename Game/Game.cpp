@@ -22,22 +22,33 @@ namespace STL
 		// 정점 버퍼 생성.
 		VertexPosition vertices[] =
 		{
-			VertexPosition(-0.5f, 0.5f, 0.5f),
+			/*VertexPosition(-0.5f, 0.5f, 0.5f),
 			VertexPosition(0.5f, -0.5f, 0.5f),
 			VertexPosition(-0.5f, -0.5f, 0.5f),
 
 			VertexPosition(-0.5f, 0.5f, 0.5f),
 			VertexPosition(0.5f, 0.5f, 0.5f),
-			VertexPosition(0.5f, -0.5f, 0.5f),
+			VertexPosition(0.5f, -0.5f, 0.5f),*/
 			
 			// dx는 왼손 좌표계(왼손을 화면에 대고 말았을 때 엄지 방향이 보이는 면)를 사용하기 때문에 점이 오른쪽을 돌면서 그려야 그려짐.
 			/*VertexPosition(-0.5f, 0.5f, 0.5f),
 			VertexPosition(0.5f, -0.5f, 0.5f),
 			VertexPosition(0.5f, 0.5f, 0.5f),*/
+
+			VertexPosition(-0.5f, -0.5f, 0.5f),		// 왼쪽 하단.
+			VertexPosition(-0.5f, 0.5f, 0.5f),		// 왼쪽 상단.
+			VertexPosition(0.5f, 0.5f, 0.5f),		// 오른쪽 상단.
+			VertexPosition(0.5f, -0.5f, 0.5f),		// 오른쪽 하단.
 		};
 
 		vertexBuffer = VertexBuffer(vertices, _countof(vertices), sizeof(vertices[0]));
 		vertexBuffer.Create(device);
+
+		// 인덱스 버퍼 생성.
+		uint32 indices[] = { 0,1,3,1,2,3 };
+
+		indexBuffer = IndexBuffer(indices, _countof(indices));
+		indexBuffer.Create(device);
 
 		// 쉐이더 초기화.
 		mainShader.Initialize(device);
@@ -60,8 +71,10 @@ namespace STL
 		inputLayout.Bind(context);
 		vertexBuffer.Bind(context);
 		mainShader.Bind(context);
+		indexBuffer.Bind(context);
 
 		// 드로우 콜 (Draw Call).
-		context->Draw(vertexBuffer.Count(), 0);
+		//context->Draw(vertexBuffer.Count(), 0);
+		context->DrawIndexed(indexBuffer.Count(), 0u, 0u);
 	}
 }
