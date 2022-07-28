@@ -17,6 +17,8 @@ namespace STL
 		void Start();
 		void Stop();
 		void Tick();
+		int64 ClockFrequency();
+		int64 Now();
 
 	private:
 		double secondsPerCount;

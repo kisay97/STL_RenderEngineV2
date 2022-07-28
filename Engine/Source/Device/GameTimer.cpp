@@ -90,4 +90,19 @@ namespace STL
 			deltaTime = 0.0;
 		}
 	}
+	int64 GameTimer::ClockFrequency()
+	{
+		static int64 countsPerSecond = 0;
+		QueryPerformanceFrequency((LARGE_INTEGER*)&countsPerSecond); //高해상도(高정밀도) 타이머(CPU 클럭만큼의 해상도(1/3.6G 초))
+
+		return countsPerSecond;
+	}
+
+	int64 GameTimer::Now()
+	{
+		static int64 currentTime = 0;
+		QueryPerformanceCounter((LARGE_INTEGER*)&currentTime);
+
+		return currentTime;
+	}
 }

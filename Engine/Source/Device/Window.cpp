@@ -77,4 +77,9 @@ namespace STL
         ShowWindow(handle, SW_SHOW);
         UpdateWindow(handle);
 	}
+    
+    void Window::SetTitle(const std::wstring& newTitle)
+    {
+        SetWindowText(handle, newTitle.c_str());
+    }
 }

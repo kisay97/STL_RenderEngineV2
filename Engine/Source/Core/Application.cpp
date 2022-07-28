@@ -24,6 +24,9 @@ namespace STL
 		deviceManager = std::make_unique<DeviceManager>();
 		deviceManager->Initialize(mainWindow->Handle(), mainWindow->Width(), mainWindow->Height());
 
+		// 타이머 생성.
+		gameTimer = std::make_unique<GameTimer>();
+
 		app = this;
 	}
 	
@@ -45,6 +48,12 @@ namespace STL
 		// Game Loop.
 		Initialize();
 
+		// 타이머 초기화.
+		gameTimer->Reset();
+
+		auto previousTime = gameTimer->Now();
+		auto oneFrameTime = gameTimer->ClockFrequency() / targetFrameRate;
+
 		MSG msg = {};
 		while (msg.message != WM_QUIT) 
 		{
@@ -55,9 +64,22 @@ namespace STL
 			}
 			else
 			{
-				ProcessInput();
-				Update();
-				Draw();
+				// 현재 시간 구하기.
+				auto currentTime = gameTimer->Now();
+
+				// 프레임 제한
+				if (currentTime >= previousTime + oneFrameTime)
+				{
+					// 프레임 시간 구하기.
+					gameTimer->Tick();
+
+					CalculateFrameStatistics();
+					ProcessInput();
+					Update(gameTimer->DeltaTime());
+					Draw();
+
+					previousTime = currentTime;
+				}
 			}
 		}
 	}
@@ -130,6 +152,33 @@ namespace STL
 	
 	void Application::EndScene()
 	{
-		deviceManager->EndScene(1, 0);
+		deviceManager->EndScene(0, 0);
+	}
+
+	void Application::CalculateFrameStatistics()
+	{
+		static int frameCount = 0;
+		static float elapsedTime = 0.0f;
+
+		++frameCount;
+
+		auto totalTime = gameTimer->TotalTime();
+
+		if ((gameTimer->TotalTime() - elapsedTime) >= 1.0f)
+		{
+			float framePerSecond = static_cast<float>(frameCount);
+			float millisecondsPerFrame = 1000.0f / framePerSecond;
+
+			std::wstringstream ss;
+
+			ss << mainWindow->Title() << L"    " // 언급 : winapi로 만든 창 제목에 tab은 넣을 수 없음.
+				<< L"FPS: " << framePerSecond << "    "
+				<< L"Frame Time: " << millisecondsPerFrame << L" (ms)";
+
+			mainWindow->SetTitle(ss.str());
+
+			frameCount = 0;
+			elapsedTime += 1.0f;
+		}
 	}
 }

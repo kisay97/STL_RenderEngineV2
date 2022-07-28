@@ -3,6 +3,7 @@
 #include <Core/Core.h>
 #include <Device/Window.h>
 #include <Device/DeviceManager.h>
+#include <Device/GameTimer.h>
 
 namespace STL 
 {
@@ -34,12 +35,16 @@ namespace STL
 
 	protected:
 
+		void CalculateFrameStatistics();
 		virtual void BeginScene();
 		virtual void RenderScene();
 		virtual void EndScene();
-
+		
 		std::unique_ptr<Window> mainWindow;
 		std::unique_ptr<DeviceManager> deviceManager;
+
+		std::unique_ptr<GameTimer> gameTimer;
+		uint32 targetFrameRate = 120;
 
 		float backgroundColor[4];
 	};

@@ -24,6 +24,8 @@ namespace STL
 		uint32 Width()	const { return width; }
 		uint32 Height() const { return height; }
 
+		void SetTitle(const std::wstring& newTitle);
+
 	private:
 		std::wstring className;		// 창 등록할 때 사용할 문자열 값.
 		std::wstring title;			// 창 제목.
