@@ -22,9 +22,18 @@ namespace STL
 		// 정점 버퍼 생성.
 		VertexPosition vertices[] =
 		{
-			VertexPosition(0.0f, 0.5f, 0.5f),
+			VertexPosition(-0.5f, 0.5f, 0.5f),
 			VertexPosition(0.5f, -0.5f, 0.5f),
-			VertexPosition(-0.5f, -0.5f, 0.5f)
+			VertexPosition(-0.5f, -0.5f, 0.5f),
+
+			VertexPosition(-0.5f, 0.5f, 0.5f),
+			VertexPosition(0.5f, 0.5f, 0.5f),
+			VertexPosition(0.5f, -0.5f, 0.5f),
+			
+			// dx는 왼손 좌표계(왼손을 화면에 대고 말았을 때 엄지 방향이 보이는 면)를 사용하기 때문에 점이 오른쪽을 돌면서 그려야 그려짐.
+			/*VertexPosition(-0.5f, 0.5f, 0.5f),
+			VertexPosition(0.5f, -0.5f, 0.5f),
+			VertexPosition(0.5f, 0.5f, 0.5f),*/
 		};
 
 		vertexBuffer = VertexBuffer(vertices, _countof(vertices), sizeof(vertices[0]));
