@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <Renderer/VertexDeclaration.h>
+#include <random>
 
 namespace STL 
 {
