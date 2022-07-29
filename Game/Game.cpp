@@ -6,7 +6,7 @@
 namespace STL 
 {
 	Game::Game(HINSTANCE hInstance, uint32 width, uint32 height, const std::wstring& title)
-		: Application(hInstance, width, height, title), texture(nullptr), samplerState(nullptr)
+		: Application(hInstance, width, height, title)
 	{
 	}
 
@@ -76,28 +76,14 @@ namespace STL
 		inputLayout.Create(device, layout, _countof(layout), mainShader.GetVertexShaderBuffer());
 
 		// 텍스처 로딩.
-		texture = TextureLoader::CreateShaderResourceView(device, L"g4.jpg");
-		if (texture == nullptr)
-		{
-			throw std::exception("failed to load texture.");
-		}
+		texture = Texture(L"g4.jpg");
+		texture.Create(device);
 
-		// 텍스처 두개 써보래서
-		texture2 = TextureLoader::CreateShaderResourceView(device, L"gulssi.bmp");
-		if (texture2 == nullptr)
-		{
-			throw std::exception("failed to load texture2.");
-		}
+		texture2 = Texture(L"gulssi.bmp");
+		texture2.Create(device);
 
 		// 샘플러 스테이트 생성.
-		D3D11_SAMPLER_DESC samplerDesc = {};
-		samplerDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_LINEAR;
-		samplerDesc.AddressU = D3D11_TEXTURE_ADDRESS_CLAMP;
-		samplerDesc.AddressV = D3D11_TEXTURE_ADDRESS_CLAMP;
-		samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_CLAMP;
-		
-		auto result = device->CreateSamplerState(&samplerDesc, &samplerState);
-		ThrowIfFailed(result, "Faield to create sampler state");
+		samplerState.Create(device);
 	}
 
 	void Game::RenderScene()
@@ -112,10 +98,12 @@ namespace STL
 		indexBuffer.Bind(context);
 
 		// 픽셀 쉐이더에 텍스처 정보 넘김?
-		context->PSSetShaderResources(0, 1, &texture);
-		context->PSSetSamplers(0, 1, &samplerState);
+		texture.Bind(context, 0);
 		// 두개째
-		context->PSSetShaderResources(1, 1, &texture2);
+		texture2.Bind(context, 1);
+
+		// 샘플러 스테이트 바인드
+		samplerState.Bind(context, 0);
 
 		// 드로우 콜 (Draw Call).
 		//context->Draw(vertexBuffer.Count(), 0);

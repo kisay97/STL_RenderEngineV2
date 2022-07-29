@@ -8,6 +8,8 @@
 #include <Renderer/IndexBuffer.h>
 #include <EngineShader/STLPositionColorShader.h>
 #include <EngineShader/STLPositionColorUVShader.h>
+#include <Renderer/SamplerState.h>
+#include <Renderer/Texture.h>
 
 namespace STL 
 {
@@ -32,8 +34,8 @@ namespace STL
 		STLPositionColorUVShader mainShader;
 
 		// 텍스처 매핑 관련.
-		ID3D11ShaderResourceView* texture;
-		ID3D11ShaderResourceView* texture2;
-		ID3D11SamplerState* samplerState;
+		Texture texture;
+		Texture texture2;
+		SamplerState samplerState;
 	};
 }

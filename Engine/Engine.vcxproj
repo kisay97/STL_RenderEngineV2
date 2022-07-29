@@ -224,6 +224,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\EngineShader\STLDefaultShader.h" />
     <ClInclude Include="Source\EngineShader\STLShader.h" />
     <ClInclude Include="Source\Renderer\PixelShader.h" />
+    <ClInclude Include="Source\Renderer\SamplerState.h" />
     <ClInclude Include="Source\Renderer\Shader.h" />
     <ClInclude Include="Source\Renderer\Buffer.h" />
     <ClInclude Include="Source\Device\RenderTargetView.h" />
@@ -233,6 +234,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\Device\GameTimer.h" />
     <ClInclude Include="Source\Device\Window.h" />
     <ClInclude Include="Source\Device\SwapChain.h" />
+    <ClInclude Include="Source\Renderer\Texture.h" />
     <ClInclude Include="Source\Renderer\VertexDeclaration.h" />
     <ClInclude Include="Source\Utility\STLException.h" />
     <ClInclude Include="Source\Renderer\VertexBuffer.h" />
@@ -249,6 +251,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClCompile Include="Source\EngineShader\STLDefaultShader.cpp" />
     <ClCompile Include="Source\EngineShader\STLShader.cpp" />
     <ClCompile Include="Source\Renderer\PixelShader.cpp" />
+    <ClCompile Include="Source\Renderer\SamplerState.cpp" />
     <ClCompile Include="Source\Renderer\Shader.cpp" />
     <ClCompile Include="Source\Renderer\Buffer.cpp" />
     <ClCompile Include="Source\Device\RenderTargetView.cpp" />
@@ -258,6 +261,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClCompile Include="Source\Device\GameTimer.cpp" />
     <ClCompile Include="Source\Device\Window.cpp" />
     <ClCompile Include="Source\Device\SwapChain.cpp" />
+    <ClCompile Include="Source\Renderer\Texture.cpp" />
     <ClCompile Include="Source\Renderer\VertexBuffer.cpp" />
     <ClCompile Include="Source\Renderer\VertexDeclaration.cpp" />
     <ClCompile Include="Source\Renderer\VertexShader.cpp" />
