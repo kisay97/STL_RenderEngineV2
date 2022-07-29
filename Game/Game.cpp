@@ -76,10 +76,17 @@ namespace STL
 		inputLayout.Create(device, layout, _countof(layout), mainShader.GetVertexShaderBuffer());
 
 		// 텍스처 로딩.
-		texture = TextureLoader::CreateShaderResourceView(device, L"g3.jpg");
+		texture = TextureLoader::CreateShaderResourceView(device, L"g4.jpg");
 		if (texture == nullptr)
 		{
 			throw std::exception("failed to load texture.");
+		}
+
+		// 텍스처 두개 써보래서
+		texture2 = TextureLoader::CreateShaderResourceView(device, L"gulssi.bmp");
+		if (texture2 == nullptr)
+		{
+			throw std::exception("failed to load texture2.");
 		}
 
 		// 샘플러 스테이트 생성.
@@ -107,6 +114,8 @@ namespace STL
 		// 픽셀 쉐이더에 텍스처 정보 넘김?
 		context->PSSetShaderResources(0, 1, &texture);
 		context->PSSetSamplers(0, 1, &samplerState);
+		// 두개째
+		context->PSSetShaderResources(1, 1, &texture2);
 
 		// 드로우 콜 (Draw Call).
 		//context->Draw(vertexBuffer.Count(), 0);

@@ -33,6 +33,7 @@ namespace STL
 
 		// 텍스처 매핑 관련.
 		ID3D11ShaderResourceView* texture;
+		ID3D11ShaderResourceView* texture2;
 		ID3D11SamplerState* samplerState;
 	};
 }
