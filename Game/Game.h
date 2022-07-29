@@ -7,6 +7,7 @@
 #include <EngineShader/STLDefaultShader.h>
 #include <Renderer/IndexBuffer.h>
 #include <EngineShader/STLPositionColorShader.h>
+#include <EngineShader/STLPositionColorUVShader.h>
 
 namespace STL 
 {
@@ -28,6 +29,10 @@ namespace STL
 		VertexBuffer vertexBuffer;
 		IndexBuffer indexBuffer;
 		InputLayout inputLayout;
-		STLPositionColorShader mainShader;
+		STLPositionColorUVShader mainShader;
+
+		// 텍스처 매핑 관련.
+		ID3D11ShaderResourceView* texture;
+		ID3D11SamplerState* samplerState;
 	};
 }

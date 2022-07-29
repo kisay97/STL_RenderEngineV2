@@ -75,6 +75,15 @@
     <ClInclude Include="Source\EngineShader\STLPositionColorShader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Utility\TextureLoader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EngineShader\STLPositionColorUVShader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Math\Vector2f.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\Core.cpp">
@@ -134,11 +143,22 @@
     <ClCompile Include="Source\EngineShader\STLPositionColorShader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utility\TextureLoader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EngineShader\STLPositionColorUVShader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Math\Vector2f.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\VertexShader.hlsl" />
     <FxCompile Include="Shader\PixelShader.hlsl" />
     <FxCompile Include="Shader\PositionColorVertexShader.hlsl" />
     <FxCompile Include="Shader\PositionColorPixelShader.hlsl" />
+    <FxCompile Include="Shader\PositionColorUVVertexShader.hlsl" />
+    <FxCompile Include="Shader\PositionColorUVPixelShader.hlsl" />
   </ItemGroup>
 </Project>
