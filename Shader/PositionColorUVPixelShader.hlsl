@@ -14,5 +14,8 @@ float4 main(PSInput input) : SV_TARGET
 	// 샘플링 (색상 추출).
 	float4 mapColor = map.Sample(mapSampler, input.texCoord);
 	//return float4(input.color, 1);
-	return mapColor;
+	//return mapColor;
+
+	float3 finalColor = mapColor.rgb + input.color;
+	return float4(finalColor, 1);
 }
