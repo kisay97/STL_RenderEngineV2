@@ -24,6 +24,10 @@ namespace STL
 		uint32 Width()	const { return width; }
 		uint32 Height() const { return height; }
 
+		void SetWidth(uint32 width);
+		void SetHeight(uint32 height);
+		void SetWidthHeight(uint32 width, uint32 height);
+
 		void SetTitle(const std::wstring& newTitle);
 
 	private:

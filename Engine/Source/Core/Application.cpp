@@ -108,6 +108,22 @@ namespace STL
 			PostQuitMessage(0);
 			return 0;
 
+		case WM_SIZE:
+			// 변경된 가로 세로 너비 구하기.
+			//uint32 width = static_cast<uint32>(LOWORD(lParam));
+			//uint32 height = static_cast<uint32>(HIWORD(lParam));
+
+			// 윈도우에 변경된 가로/세로 크기 설정.
+			mainWindow->SetWidthHeight(
+				static_cast<uint32>(LOWORD(lParam)), 
+				static_cast<uint32>(HIWORD(lParam))
+			);
+
+			// 장치 크기 변경 함수 호출.
+			OnResize();
+
+			return 0;
+
 		case WM_PAINT:
 		{
 			PAINTSTRUCT ps;
@@ -156,6 +172,14 @@ namespace STL
 		deviceManager->EndScene(0, 0);
 	}
 
+	void Application::OnResize()
+	{
+		deviceManager->OnResize(
+			mainWindow->Width(),
+			mainWindow->Height()
+		);
+	}
+
 	void Application::CalculateFrameStatistics()
 	{
 		static int frameCount = 0;
@@ -174,7 +198,9 @@ namespace STL
 
 			ss << mainWindow->Title() << L"    " // 언급 : winapi로 만든 창 제목에 tab은 넣을 수 없음.
 				<< L"FPS: " << framePerSecond << "    "
-				<< L"Frame Time: " << millisecondsPerFrame << L" (ms)";
+				<< L"Frame Time: " << millisecondsPerFrame << L" (ms)"
+				<< L"    Width: " << mainWindow->Width()
+				<< L", Height: " << mainWindow->Height();
 
 			mainWindow->SetTitle(ss.str());
 

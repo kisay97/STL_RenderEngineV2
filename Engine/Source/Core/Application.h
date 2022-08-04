@@ -39,6 +39,7 @@ namespace STL
 		virtual void BeginScene();
 		virtual void RenderScene();
 		virtual void EndScene();
+		virtual void OnResize();
 		
 		std::unique_ptr<Window> mainWindow;
 		std::unique_ptr<DeviceManager> deviceManager;

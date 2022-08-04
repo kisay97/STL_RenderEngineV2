@@ -79,6 +79,22 @@ namespace STL
         UpdateWindow(handle);
 	}
     
+    void Window::SetWidth(uint32 width)
+    {
+        this->width = width;
+    }
+
+    void Window::SetHeight(uint32 height)
+    {
+        this->height = height;
+    }
+
+    void Window::SetWidthHeight(uint32 width, uint32 height)
+    {
+        this->width = width;
+        this->height = height;
+    }
+
     void Window::SetTitle(const std::wstring& newTitle)
     {
         SetWindowText(handle, newTitle.c_str());

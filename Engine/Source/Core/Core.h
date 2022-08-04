@@ -30,6 +30,8 @@
 #include <sstream>			// 문자열 조합에 편리함.
 #include <filesystem>
 
+#include <cassert>			// assert 함수 사용을 위함. 특정 조건을 만족하지 않으면 중단.
+
 // 타입 재정의.
 using uint32 = unsigned int;
 using uint64 = unsigned __int64;

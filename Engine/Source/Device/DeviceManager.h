@@ -17,6 +17,7 @@ namespace STL
 		void BeginScene(const float* backgroundColor);
 		void RenderScene();
 		void EndScene(uint32 syncInterval, uint32 flags);
+		void OnResize(uint32 width, uint32 height);
 		
 		// Getter.
 		ID3D11Device* GetDevice() const { return device; }
