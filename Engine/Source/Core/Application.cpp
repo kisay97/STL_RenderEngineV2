@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "Application.h"
 
 namespace STL

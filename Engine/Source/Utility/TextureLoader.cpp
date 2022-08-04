@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "TextureLoader.h"
 #include <DirectXTex.h>
 #include <Utility/STLException.h>

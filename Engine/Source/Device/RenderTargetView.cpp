@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "RenderTargetView.h"
 #include <Utility/STLException.h>
 #include <cassert>

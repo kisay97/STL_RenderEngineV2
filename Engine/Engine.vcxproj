@@ -96,8 +96,10 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>ENGINE_BUILD_DLL;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source\;$(SolutionDir)Include\DirectXTex\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\;$(ProjectDir)Source\Core\;$(SolutionDir)Include\DirectXTex\;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Core.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,8 +130,10 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>ENGINE_BUILD_DLL;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source\;$(SolutionDir)Include\DirectXTex\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\;$(ProjectDir)Source\Core\;$(SolutionDir)Include\DirectXTex\;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Core.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,8 +164,10 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>ENGINE_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source\;$(SolutionDir)Include\DirectXTex\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\;$(ProjectDir)Source\Core\;$(SolutionDir)Include\DirectXTex\;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Core.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -192,8 +198,10 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>ENGINE_BUILD_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source\;$(SolutionDir)Include\DirectXTex\;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source\;$(ProjectDir)Source\Core\;$(SolutionDir)Include\DirectXTex\;</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>Core.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -257,7 +265,12 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClCompile Include="Source\Device\RenderTargetView.cpp" />
     <ClCompile Include="Source\Device\DeviceManager.cpp" />
     <ClCompile Include="Source\Core\Application.cpp" />
-    <ClCompile Include="Source\Core\Core.cpp" />
+    <ClCompile Include="Source\Core\Core.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Source\Device\GameTimer.cpp" />
     <ClCompile Include="Source\Device\Window.cpp" />
     <ClCompile Include="Source\Device\SwapChain.cpp" />

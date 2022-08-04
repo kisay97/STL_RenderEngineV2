@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "STLPositionColorUVShader.h"
 
 namespace STL

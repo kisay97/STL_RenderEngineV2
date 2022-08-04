@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "DeviceManager.h"
 #include <Utility/STLException.h>
 

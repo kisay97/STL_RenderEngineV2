@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "VertexShader.h"
 #include <Utility/STLException.h>
 

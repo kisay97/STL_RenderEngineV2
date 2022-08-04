@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "SwapChain.h"
 #include <Utility/STLException.h>
 

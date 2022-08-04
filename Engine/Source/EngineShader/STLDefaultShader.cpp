@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "STLDefaultShader.h"
 
 namespace STL

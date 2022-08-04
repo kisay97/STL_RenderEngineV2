@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "PixelShader.h"
 #include <Utility/STLException.h>
 

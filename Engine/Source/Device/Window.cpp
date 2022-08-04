@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "Window.h"
 #include <exception>        // 표준 예외(exception).
 

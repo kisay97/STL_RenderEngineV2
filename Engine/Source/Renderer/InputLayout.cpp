@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "InputLayout.h"
 
 namespace STL

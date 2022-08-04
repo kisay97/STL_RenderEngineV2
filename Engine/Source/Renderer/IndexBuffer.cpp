@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "IndexBuffer.h"
 #include <Utility/STLException.h>
 

@@ -7,7 +7,8 @@
 
 // 미봉책. (DLL 뽑는 코드에 STL 쓰면 4251 워닝나는데, 문제될 게 없으므로 Warning을 꺼버린다.)
 // 정석대로 할려면 https://mgun.tistory.com/681 참고
-#pragma warning(default:4251)
+#pragma warning(disable:4251)
+#pragma warning(disable:4244)
 
 #ifdef ENGINE_BUILD_DLL
 #define ENGINE_API __declspec(dllexport)

@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "SamplerState.h"
 #include <Utility/STLException.h>
 

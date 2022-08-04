@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "Texture.h"
 #include <Utility/TextureLoader.h>
 

@@ -1,3 +1,4 @@
+#include "Core.h"
 #include "GameTimer.h"
 
 namespace STL
