@@ -77,7 +77,7 @@ namespace STL
 			const Vector2f& uv)
 			: position(position.x, position.y, position.z),
 			color(color.x, color.y, color.z),
-			texCoord(uv.u, uv.v)
+			texCoord(uv.x, uv.y)
 		{
 		}
 	};
