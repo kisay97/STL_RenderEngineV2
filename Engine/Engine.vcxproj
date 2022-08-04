@@ -227,6 +227,9 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Math\MathHelper.h" />
+    <ClInclude Include="Source\Math\Matrix4f.h" />
+    <ClInclude Include="Source\Math\Quaternionf.h" />
     <ClInclude Include="Source\Renderer\IndexBuffer.h" />
     <ClInclude Include="Source\Renderer\InputLayout.h" />
     <ClInclude Include="Source\EngineShader\STLDefaultShader.h" />
@@ -254,6 +257,9 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\Math\Vector2f.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Math\MathHelper.cpp" />
+    <ClCompile Include="Source\Math\Matrix4f.cpp" />
+    <ClCompile Include="Source\Math\Quaternionf.cpp" />
     <ClCompile Include="Source\Renderer\IndexBuffer.cpp" />
     <ClCompile Include="Source\Renderer\InputLayout.cpp" />
     <ClCompile Include="Source\EngineShader\STLDefaultShader.cpp" />
