@@ -2,6 +2,7 @@
 #include <Renderer/VertexDeclaration.h>
 #include <Utility/TextureLoader.h>
 #include <Utility/STLException.h>
+#include <Math/MathHelper.h>
 
 namespace STL 
 {
@@ -84,6 +85,57 @@ namespace STL
 
 		// 샘플러 스테이트 생성.
 		samplerState.Create(device);
+
+		// 위치 행렬만 적용해서 월드 행렬 생성.
+		worldMatrix = Matrix4f::Translation(position);
+		// 월드 행렬을 데이터로 상수 버퍼 생성.
+		transformBuffer = ConstantBuffer(&worldMatrix, 1, sizeof(worldMatrix));
+		transformBuffer.Create(device);
+
+		/*rotation.z = -45.0f;
+		scale.x = 0.5f;
+		position.y = 0.5f;*/
+	}
+
+	void Game::Update(float deltaTime)
+	{
+		// 왔다갔다 하는 예제
+		static float alpha = 0.0f;
+		static float sign = 1.0f;
+		alpha += 0.5f * deltaTime * sign;
+		if (deltaTime > 1.0f)
+		{
+			alpha = 0.0f;
+		}
+
+		if (alpha > 1.0f)
+		{
+			sign = -1.0f;
+		}
+
+		if (alpha < 0.0f)
+		{
+			sign = 1.0f;
+		}
+
+		static float xStart = -0.5f;
+		static float xEnd = 0.5f;
+
+		float xPosition = MathHelper::Lerpf(xStart, xEnd, alpha);
+		position.x = xPosition;
+		
+		rotation.z += 3.0f;
+
+		scale.x = xPosition;
+		scale.y = xPosition;
+
+		// 위치/회전/스케일 값을 적용해서 월드 행렬 데이터 업데이트
+		worldMatrix = Matrix4f::Scale(scale)
+			* Matrix4f::Rotation(rotation)
+			* Matrix4f::Translation(position);
+
+		// 갱신된 월드 행렬 데이터로 상수 버퍼 업데이트.
+		transformBuffer.Update(deviceManager->GetContext(), &worldMatrix);
 	}
 
 	void Game::RenderScene()
@@ -104,6 +156,9 @@ namespace STL
 
 		// 샘플러 스테이트 바인드
 		samplerState.Bind(context, 0);
+
+		// 트랜스폼 버퍼 바인드
+		transformBuffer.Bind(context, 0);
 
 		// 드로우 콜 (Draw Call).
 		//context->Draw(vertexBuffer.Count(), 0);
