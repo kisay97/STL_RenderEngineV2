@@ -15,6 +15,8 @@
 #include <EngineShader/STLPositionColorUVShader.h>
 #include <EngineShader/STLTransformShader.h>
 
+#include <Component/Actor.h>
+
 #include <Math/Vector3f.h>
 #include <Math/Matrix4f.h>
 
@@ -46,14 +48,18 @@ namespace STL
 		Texture texture2;
 		SamplerState samplerState;
 
-		// 위치/회전/스케일.
-		// 행렬 TRS.
-		Vector3f position = Vector3f::Zero;
-		Vector3f rotation = Vector3f::Zero;
-		Vector3f scale = Vector3f::One;
-		Matrix4f worldMatrix = Matrix4f::Identity();
+		//// 위치/회전/스케일.
+		//// 행렬 TRS.
+		//Vector3f position = Vector3f::Zero;
+		//Vector3f rotation = Vector3f::Zero;
+		//Vector3f scale = Vector3f::One;
+		//Matrix4f worldMatrix = Matrix4f::Identity();
 
-		// 상수버퍼.
-		ConstantBuffer transformBuffer;
+		//// 상수버퍼.
+		//ConstantBuffer transformBuffer;
+
+		// Actor.
+		std::unique_ptr<Actor> actor1;
+		std::unique_ptr<Actor> actor2;
 	};
 }
