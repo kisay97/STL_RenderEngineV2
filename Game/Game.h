@@ -46,6 +46,7 @@ namespace STL
 		// 텍스처 매핑 관련.
 		Texture texture;
 		Texture texture2;
+		Texture texture3;
 		SamplerState samplerState;
 
 		//// 위치/회전/스케일.
