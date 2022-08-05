@@ -227,6 +227,9 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Component\Actor.h" />
+    <ClInclude Include="Source\Component\Component.h" />
+    <ClInclude Include="Source\Component\RTTI.h" />
     <ClInclude Include="Source\Renderer\ConstantBuffer.h" />
     <ClInclude Include="Source\Math\MathHelper.h" />
     <ClInclude Include="Source\Math\Matrix4f.h" />
@@ -257,8 +260,11 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\EngineShader\STLPositionColorUVShader.h" />
     <ClInclude Include="Source\Math\Vector2f.h" />
     <ClInclude Include="Source\EngineShader\STLTransformShader.h" />
+    <ClInclude Include="Source\Component\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Component\Actor.cpp" />
+    <ClCompile Include="Source\Component\Component.cpp" />
     <ClCompile Include="Source\Renderer\ConstantBuffer.cpp" />
     <ClCompile Include="Source\Math\MathHelper.cpp" />
     <ClCompile Include="Source\Math\Matrix4f.cpp" />
@@ -293,6 +299,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClCompile Include="Source\EngineShader\STLPositionColorUVShader.cpp" />
     <ClCompile Include="Source\Math\Vector2f.cpp" />
     <ClCompile Include="Source\EngineShader\STLTransformShader.cpp" />
+    <ClCompile Include="Source\Component\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\PixelShader.hlsl">
