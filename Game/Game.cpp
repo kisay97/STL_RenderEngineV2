@@ -129,6 +129,16 @@ namespace STL
 		actor1->SetPosition(xPosition + actorOffset, 0.0f, 0.0f);
 		actor2->SetPosition(xPosition + actorOffset2, 0.0f, 0.0f);
 
+		Vector3f a1r = actor1->Rotation();
+		Vector3f a2r = actor2->Rotation();
+		a1r.z += 3;
+		a2r.z += 3;
+		actor1->SetRotation(a1r);
+		actor2->SetRotation(a2r);
+
+		actor1->SetScale(xPosition, xPosition, 0.0f);
+		actor2->SetScale(xPosition, xPosition, 0.0f);
+
 		auto context = deviceManager->GetContext();
 		actor1->Update(context, deltaTime);
 		actor2->Update(context, deltaTime);
