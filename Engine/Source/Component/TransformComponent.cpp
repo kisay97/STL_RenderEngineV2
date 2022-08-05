@@ -90,7 +90,7 @@ namespace STL
 	
 	Vector3f TransformComponent::Position() const
 	{
-		return Vector3f();
+		return position;
 	}
 	
 	void TransformComponent::SetRotation(float x, float y, float z)
@@ -107,7 +107,7 @@ namespace STL
 	
 	Vector3f TransformComponent::Rotation() const
 	{
-		return Vector3f();
+		return rotation;
 	}
 	
 	void TransformComponent::SetScale(float x, float y, float z)
@@ -124,7 +124,7 @@ namespace STL
 	
 	Vector3f TransformComponent::Scale() const
 	{
-		return Vector3f();
+		return scale;
 	}
 	
 	void TransformComponent::SetDirty()
