@@ -30,7 +30,7 @@ namespace STL
 		}
 
 		template<typename T>
-		T* As() const
+		T* As()
 		{
 			if (Is(T::TypeIdClass()))
 			{

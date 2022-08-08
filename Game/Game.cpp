@@ -46,23 +46,6 @@ namespace STL
 		//	VertexPosition(0.5f, -0.5f, 0.5f),		// 오른쪽 하단.
 		//};
 
-		VertexPositionColorUV vertices[] =
-		{
-			VertexPositionColorUV({-0.5f, -0.5f, 0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 1.0f}),		// 왼쪽 하단.
-			VertexPositionColorUV({-0.5f, 0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}, {0.0f, 0.0f}),		// 왼쪽 상단.
-			VertexPositionColorUV({0.5f, 0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}, {1.0f, 0.0f}),		// 오른쪽 상단.
-			VertexPositionColorUV({0.5f, -0.5f, 0.5f}, {1.0f, 0.0f, 0.0f}, {1.0f, 1.0f}),		// 오른쪽 하단.
-		};
-
-		vertexBuffer = VertexBuffer(vertices, _countof(vertices), sizeof(vertices[0]));
-		vertexBuffer.Create(device);
-
-		// 인덱스 버퍼 생성.
-		uint32 indices[] = { 0,1,3,1,2,3 };
-
-		indexBuffer = IndexBuffer(indices, _countof(indices));
-		indexBuffer.Create(device);
-
 		// 쉐이더 초기화.
 		mainShader.Initialize(device);
 
@@ -90,51 +73,58 @@ namespace STL
 		samplerState.Create(device);
 
 		// 물체 생성.
-		actor1 = std::make_unique<Actor>(device);
-		actor1->Create(device);
-		actor1->SetScale(0.5f, 0.5f, 1.0f); //x,y 스케일을 1/2로 축소
-		actor1->SetPosition(-0.5f, 0.0f, 0.5f); //물체 위치를 왼쪽으로 0.5만큼 이동.
+		//actor1 = std::make_unique<Actor>(device);
+		//actor1->Create(device);
+		//actor1->SetScale(0.5f, 0.5f, 1.0f); //x,y 스케일을 1/2로 축소
+		//actor1->SetPosition(-0.5f, 0.0f, 0.5f); //물체 위치를 왼쪽으로 0.5만큼 이동.
 
-		actor2 = std::make_unique<Actor>(device);
-		actor2->Create(device);
-		actor2->SetScale(0.5f, 0.5f, 1.0f); //x,y 스케일을 1/2로 축소
-		actor2->SetPosition(0.5f, 0.0f, 0.5f); //물체 위치를 오른쪽으로 0.5만큼 이동.
+		//actor2 = std::make_unique<Actor>(device);
+		//actor2->Create(device);
+		//actor2->SetScale(0.5f, 0.5f, 1.0f); //x,y 스케일을 1/2로 축소
+		//actor2->SetPosition(0.5f, 0.0f, 0.5f); //물체 위치를 오른쪽으로 0.5만큼 이동.
+		
+		// 레벨 초기화
+		mainLevel.Initialize(device);
 	}
 
 	void Game::Update(float deltaTime)
 	{
-		// 이동 예제
-		static float alpha = 0.0f;
-		static float sign = 1.0f;
-		static float moveSpeed = 0.5f;
-		static float actorOffset = actor1->Position().x;
-		static float actorOffset2 = actor2->Position().x;
-		alpha += moveSpeed * deltaTime * sign;
-		if (deltaTime > 1.0f)
-		{
-			alpha = 0.0f;
-		}
-
-		if (alpha > 1.0f)
-		{
-			sign = -1.0f;
-		}
-
-		if (alpha < 0.0f)
-		{
-			sign = 1.0f;
-		}
-
-		static float xStart = -0.5f;
-		static float xEnd = 0.5f;
-
-		float xPosition = MathHelper::Lerpf(xStart, xEnd, alpha);
-		actor1->SetPosition(xPosition + actorOffset + 0.2f, 0.0f, 0.2\f);
-		actor2->SetPosition(0.0f, xPosition + actorOffset2 - 0.2f, 0.0f);
-
+		// 레벨 업데이트.
 		auto context = deviceManager->GetContext();
-		actor1->Update(context, deltaTime);
-		actor2->Update(context, deltaTime);
+		mainLevel.Update(context, deltaTime);
+
+		//// 이동 예제
+		//static float alpha = 0.0f;
+		//static float sign = 1.0f;
+		//static float moveSpeed = 0.5f;
+		//static float actorOffset = actor1->Position().x;
+		//static float actorOffset2 = actor2->Position().x;
+		//alpha += moveSpeed * deltaTime * sign;
+		//if (deltaTime > 1.0f)
+		//{
+		//	alpha = 0.0f;
+		//}
+
+		//if (alpha > 1.0f)
+		//{
+		//	sign = -1.0f;
+		//}
+
+		//if (alpha < 0.0f)
+		//{
+		//	sign = 1.0f;
+		//}
+
+		//static float xStart = -0.5f;
+		//static float xEnd = 0.5f;
+
+		//float xPosition = MathHelper::Lerpf(xStart, xEnd, alpha);
+		//actor1->SetPosition(xPosition + actorOffset + 0.2f, 0.0f, 0.2f);
+		//actor2->SetPosition(0.0f, xPosition + actorOffset2 - 0.2f, 0.0f);
+
+		//auto context = deviceManager->GetContext();
+		//actor1->Update(context, deltaTime);
+		//actor2->Update(context, deltaTime);
 	}
 
 	void Game::RenderScene()
@@ -144,9 +134,9 @@ namespace STL
 		// Draw 함수를 실행하기 전에 GPU에서 사용할 리소스를 모두 바인딩(연결)한다.
 		// 순서는 무관.
 		inputLayout.Bind(context);
-		vertexBuffer.Bind(context);
+		//vertexBuffer.Bind(context);
 		mainShader.Bind(context);
-		indexBuffer.Bind(context);
+		//indexBuffer.Bind(context);
 
 		// 픽셀 쉐이더에 텍스처 정보 넘김?
 		texture.Bind(context, 0);
@@ -156,16 +146,19 @@ namespace STL
 		// 샘플러 스테이트 바인드
 		samplerState.Bind(context, 0);
 
+		mainLevel.Bind(context);
+		mainLevel.Draw(context);
+
 		// 트랜스폼 버퍼 바인드
 		//transformBuffer.Bind(context, 0);
-		actor1->Bind(context);
+		//actor1->Bind(context);
 
-		// 드로우 콜 (Draw Call).
-		//context->Draw(vertexBuffer.Count(), 0);
-		context->DrawIndexed(indexBuffer.Count(), 0u, 0u);
+		//// 드로우 콜 (Draw Call).
+		////context->Draw(vertexBuffer.Count(), 0);
+		//context->DrawIndexed(indexBuffer.Count(), 0u, 0u);
 
-		texture3.Bind(context, 0);
-		actor2->Bind(context);
-		context->DrawIndexed(indexBuffer.Count(), 0u, 0u);
+		//texture3.Bind(context, 0);
+		//actor2->Bind(context);
+		//context->DrawIndexed(indexBuffer.Count(), 0u, 0u);
 	}
 }

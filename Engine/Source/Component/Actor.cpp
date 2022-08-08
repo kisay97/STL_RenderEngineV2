@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "TransformComponent.h"
 #include <Math/Vector3f.h>
+#include "StaticMeshComponent.h"
 
 namespace STL
 {
@@ -69,6 +70,23 @@ namespace STL
 		for (const auto component : components)
 		{
 			component->Bind(context);
+		}
+	}
+
+	void Actor::Draw(ID3D11DeviceContext* context)
+	{
+		// 트랜스폼 Bind.
+		transform->Bind(context);
+
+		// 스태틱 메시 컴포넌트의 Draw 호출.
+		for (const auto component : components)
+		{
+			// 형변환.
+			auto meshComponent = component->As<StaticMeshComponent>();
+			if (meshComponent != nullptr)
+			{
+				meshComponent->Draw(context);
+			}
 		}
 	}
 	

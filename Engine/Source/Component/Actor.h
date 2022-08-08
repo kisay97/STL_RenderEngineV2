@@ -37,6 +37,7 @@ namespace STL
 		virtual void Create(ID3D11Device* device);
 		virtual void Update(ID3D11DeviceContext* context, float deltaTime = 0.0f);
 		virtual void Bind(ID3D11DeviceContext* context);
+		virtual void Draw(ID3D11DeviceContext* context);
 
 		// 트랜스폼 정보(위치/회전/스케일) 관련 편의 함수.
 		void SetPosition(float x, float y, float z);

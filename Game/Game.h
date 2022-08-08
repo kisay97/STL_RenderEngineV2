@@ -20,6 +20,8 @@
 #include <Math/Vector3f.h>
 #include <Math/Matrix4f.h>
 
+#include "DemoLevel.h"
+
 namespace STL 
 {
 	class Game : public Application
@@ -38,8 +40,8 @@ namespace STL
 		virtual void RenderScene() override;
 
 	private:
-		VertexBuffer vertexBuffer;
-		IndexBuffer indexBuffer;
+		//VertexBuffer vertexBuffer;
+		//IndexBuffer indexBuffer;
 		InputLayout inputLayout;
 		STLTransformShader mainShader;
 
@@ -48,6 +50,8 @@ namespace STL
 		Texture texture2;
 		Texture texture3;
 		SamplerState samplerState;
+
+		DemoLevel mainLevel;
 
 		//// 위치/회전/스케일.
 		//// 행렬 TRS.
@@ -60,7 +64,7 @@ namespace STL
 		//ConstantBuffer transformBuffer;
 
 		// Actor.
-		std::unique_ptr<Actor> actor1;
-		std::unique_ptr<Actor> actor2;
+		//std::unique_ptr<Actor> actor1;
+		//std::unique_ptr<Actor> actor2;
 	};
 }
