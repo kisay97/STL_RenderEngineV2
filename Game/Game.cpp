@@ -129,8 +129,8 @@ namespace STL
 		static float xEnd = 0.5f;
 
 		float xPosition = MathHelper::Lerpf(xStart, xEnd, alpha);
-		actor1->SetPosition(xPosition + actorOffset, 0.0f, 0.0f);
-		actor2->SetPosition(xPosition + actorOffset2, 0.0f, 0.0f);
+		actor1->SetPosition(xPosition + actorOffset + 0.2f, 0.0f, 0.2\f);
+		actor2->SetPosition(0.0f, xPosition + actorOffset2 - 0.2f, 0.0f);
 
 		auto context = deviceManager->GetContext();
 		actor1->Update(context, deltaTime);

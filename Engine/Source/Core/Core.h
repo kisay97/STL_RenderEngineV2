@@ -37,6 +37,7 @@
 using uint32 = unsigned int;
 using uint64 = unsigned __int64;
 using int64 = __int64;
+using uint8 = unsigned char;
 
 // 편의 함수.
 // COM 객체 메모리 해제할 때 사용할 함수.

@@ -227,6 +227,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Device\DepthStencilView.h" />
     <ClInclude Include="Source\Component\Actor.h" />
     <ClInclude Include="Source\Component\Component.h" />
     <ClInclude Include="Source\Component\RTTI.h" />
@@ -263,6 +264,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\Component\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Device\DepthStencilView.cpp" />
     <ClCompile Include="Source\Component\Actor.cpp" />
     <ClCompile Include="Source\Component\Component.cpp" />
     <ClCompile Include="Source\Renderer\ConstantBuffer.cpp" />

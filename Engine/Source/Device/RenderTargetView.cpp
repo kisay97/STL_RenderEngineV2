@@ -38,9 +38,9 @@ namespace STL
 		SafeRelease(backbuffer);
 	}
 	
-	void RenderTargetView::Bind(ID3D11DeviceContext* context)
+	void RenderTargetView::Bind(ID3D11DeviceContext* context, ID3D11DepthStencilView* depthStencilView)
 	{
-		context->OMSetRenderTargets(1, &renderTargetView, nullptr);
+		context->OMSetRenderTargets(1, &renderTargetView, depthStencilView);
 	}
 	
 	

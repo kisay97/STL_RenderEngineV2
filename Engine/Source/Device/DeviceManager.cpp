@@ -75,6 +75,9 @@ namespace STL
         // ·»´õ Å¸°Ù ºä »ý¼º
         renderTargetView.Create(swapChain.Get(), device);
 
+        // µª½º ½ºÅÙ½Ç ºä »ý¼º.
+        depthStencilView.Create(device, width, height, true, m4xMSAAQuality);
+
         // È­¸é(Viewport) ¼³Á¤.
         D3D11_VIEWPORT viewport = {};
         viewport.TopLeftX = 0.0f;
@@ -92,8 +95,12 @@ namespace STL
 	{
         // ¹è°æ Áö¿ì±â.
         //context->ClearRenderTargetView(renderTargetView, backgroundColor);
-        renderTargetView.Bind(context);
+        renderTargetView.Bind(context, depthStencilView.Get());
         renderTargetView.Clear(context, backgroundColor);
+        depthStencilView.Clear(context, 
+            D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 
+            1.0f, 0
+        );
 	}
 	
 	void DeviceManager::RenderScene()
@@ -118,6 +125,9 @@ namespace STL
         // ·»´õ Å¸°Ù ÇØÁ¦.
         SafeRelease(renderTargetView.Get());
 
+        // µª½º ½ºÅÙ½Ç ºä ÇØÁ¦.
+        SafeRelease(depthStencilView.Get());
+
         // ½º¿ÒÃ¼ÀÎÀÇ ¹öÆÛ Å©±â Á¶Á¤.
         auto result = swapChain.Get()->ResizeBuffers(
             1, width, height, DXGI_FORMAT_R8G8B8A8_UNORM, 0
@@ -128,6 +138,17 @@ namespace STL
 
         // ·»´õÅ¸°Ù Àç»ý¼º.
         renderTargetView.Create(swapChain.Get(), device);
+
+        // ¸ÖÆ¼ »ùÇÃ¸µ Áö¿ø ¿©ºÎ È®ÀÎ.
+        uint32 m4xMSAAQuality = 0;
+        result = device->CheckMultisampleQualityLevels(
+            DXGI_FORMAT_R8G8B8A8_UNORM,
+            4,
+            &m4xMSAAQuality
+        );
+
+        // µª½º ½ºÅÙ½Ç ºä Àç»ý¼º.
+        depthStencilView.Create(device, width, height, true, m4xMSAAQuality);
 
         // ºäÆ÷Æ®(È­¸é) »ý¼º.
         D3D11_VIEWPORT viewport = {};

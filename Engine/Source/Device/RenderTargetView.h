@@ -11,7 +11,7 @@ namespace STL
 		~RenderTargetView();
 
 		void Create(IDXGISwapChain* swapChain, ID3D11Device* device);
-		void Bind(ID3D11DeviceContext* context);
+		void Bind(ID3D11DeviceContext* context, ID3D11DepthStencilView* depthStencilView);
 		void Clear(ID3D11DeviceContext* context, const float* clearColor);
 
 		ID3D11RenderTargetView* Get() { return renderTargetView; }
