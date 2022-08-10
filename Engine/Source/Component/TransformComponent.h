@@ -21,7 +21,7 @@ namespace STL
 		virtual void Bind(ID3D11DeviceContext* context) override;
 
 		// 트랜스폼 정보(위치/회전/스케일) 관련 편의 함수.
-		Vector3f Forword() const;
+		Vector3f Forward() const;
 		Vector3f Right() const;
 		Vector3f Up() const;
 

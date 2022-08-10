@@ -11,6 +11,8 @@
 
 #include <Core/Application.h> // 엔진 기능 사용을 위해.
 
+#include "CameraController.h"
+
 namespace STL
 {
 	DemoLevel::DemoLevel()
@@ -64,6 +66,13 @@ namespace STL
 			0.1f, // 근평면 거리.
 			1000.0f // 원평면 거리.
 		));
+
+		// 카메라 컨트롤러 생성 및 컴포넌트 추가.
+		auto cameraController = new CameraController();
+		cameraController->SetKeyboard(engine->GetKeyboard());
+		cameraController->SetMouse(engine->GetMouse());
+		cameraController->SetMoveSpeed(2.0f); // 이동 속도.
+		cameraActor->AddComponent(cameraController);
 
 		// 레벨에 액터 추가
 		AddActor(actor);

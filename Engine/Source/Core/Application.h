@@ -7,6 +7,10 @@
 
 namespace STL 
 {
+	// 전방선언.
+	class KeyboardInput;
+	class MouseInput;
+
 	class ENGINE_API Application
 	{
 	public:
@@ -36,6 +40,9 @@ namespace STL
 			LPARAM lParam
 		);
 
+		KeyboardInput* GetKeyboard();
+		MouseInput* GetMouse();
+
 	protected:
 
 		void CalculateFrameStatistics();
@@ -46,6 +53,9 @@ namespace STL
 		
 		std::unique_ptr<Window> mainWindow;
 		std::unique_ptr<DeviceManager> deviceManager;
+
+		std::unique_ptr<KeyboardInput> keyboard;
+		std::unique_ptr<MouseInput> mouse;
 
 		std::unique_ptr<GameTimer> gameTimer;
 		uint32 targetFrameRate = 120;

@@ -55,7 +55,7 @@ namespace STL
 	}
 	
 	// 트랜스폼의 회전 값을 기준으로 앞 방향 구하기
-	Vector3f TransformComponent::Forword() const
+	Vector3f TransformComponent::Forward() const
 	{
 		Vector3f rot = rotation;
 		Matrix4f orientation = Matrix4f::Rotation(rot); // 회전 행렬 만들고

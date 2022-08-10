@@ -1,5 +1,7 @@
 #include "Core.h"
 #include "Application.h"
+#include <Device/KeyboardInput.h>
+#include <Device/MouseInput.h>
 
 namespace STL
 {
@@ -27,6 +29,13 @@ namespace STL
 
 		// 타이머 생성.
 		gameTimer = std::make_unique<GameTimer>();
+
+		// 키보드/마우스 생성.
+		keyboard = std::make_unique<KeyboardInput>();
+		keyboard->Initialize();
+
+		mouse = std::make_unique<MouseInput>(mainWindow->Handle());
+		mouse->Initialize();
 
 		app = this;
 	}
@@ -87,6 +96,8 @@ namespace STL
 	
 	void Application::ProcessInput()
 	{
+		keyboard->Update();
+		mouse->Update();
 	}
 	
 	void Application::Update(float deltaTime)
@@ -106,6 +117,11 @@ namespace STL
 		{
 		case WM_DESTROY:
 			PostQuitMessage(0);
+			return 0;
+
+		case WM_ACTIVATEAPP:
+			DirectX::Keyboard::ProcessMessage(message, wParam, lParam);
+			DirectX::Mouse::ProcessMessage(message, wParam, lParam);
 			return 0;
 
 		case WM_SIZE:
@@ -143,24 +159,39 @@ namespace STL
 		}
 		return 0;
 
+		// 키보드 입력.
 		case WM_KEYDOWN:
-		{
-			// ESC 키가 눌리면.
-			if (wParam == VK_ESCAPE)
-			{
-				// 메시지 상자 띄우기.
-				// 예/아니요 버튼을 제공하는 메시지 상자를 띄우고, "예"를 선택하면 창 삭제.
-				if (MessageBox(nullptr, TEXT("Quit?"), TEXT("Quit Engine"), MB_YESNO) == IDYES)
-				{
-					// 창 핸들 삭제 -> 창 삭제.
-					DestroyWindow(handle);
-				}
-			}
-		}
-		return 0;
+		case WM_SYSKEYDOWN:
+		case WM_SYSKEYUP:
+		case WM_KEYUP:
+			DirectX::Keyboard::ProcessMessage(message, wParam, lParam);
+			return 0;
+		// 마우스 입력.
+		case WM_INPUT:
+		case WM_MOUSEMOVE:
+		case WM_LBUTTONDOWN:
+		case WM_LBUTTONUP:
+		case WM_RBUTTONDOWN:
+		case WM_RBUTTONUP:
+		case WM_MBUTTONDOWN:
+		case WM_MBUTTONUP:
+		case WM_MOUSEWHEEL:
+		case WM_MOUSEHOVER:
+			DirectX::Mouse::ProcessMessage(message, wParam, lParam);
+			return 0;
 		}
 
 		return DefWindowProc(handle, message, wParam, lParam);
+	}
+
+	KeyboardInput* Application::GetKeyboard()
+	{
+		return keyboard.get();
+	}
+
+	MouseInput* Application::GetMouse()
+	{
+		return mouse.get();
 	}
 	
 	void Application::BeginScene()
