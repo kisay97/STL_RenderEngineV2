@@ -26,6 +26,9 @@ namespace STL
 		virtual void Update(float deltaTime = 0.0f);
 		virtual void Draw();
 
+		uint32 Width() { return mainWindow->Width(); }
+		uint32 Height() { return mainWindow->Height(); }
+
 		virtual LRESULT MessageProcessor(
 			HWND handle,
 			uint32 message,

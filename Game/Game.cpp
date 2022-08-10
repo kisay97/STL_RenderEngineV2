@@ -84,7 +84,7 @@ namespace STL
 		//actor2->SetPosition(0.5f, 0.0f, 0.5f); //물체 위치를 오른쪽으로 0.5만큼 이동.
 		
 		// 레벨 초기화
-		mainLevel.Initialize(device);
+		mainLevel.Initialize(device, this);
 	}
 
 	void Game::Update(float deltaTime)

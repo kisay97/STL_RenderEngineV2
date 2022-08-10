@@ -7,6 +7,7 @@ namespace STL
 {
 	// 전방 선언.
 	class Actor;
+	class TransformComponent;
 
 	class ENGINE_API Component : public RTTI
 	{
@@ -26,5 +27,6 @@ namespace STL
 
 	protected:
 		Actor* ownerActor;
+		TransformComponent* transform;
 	};
 }

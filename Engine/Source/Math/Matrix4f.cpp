@@ -34,7 +34,7 @@ namespace STL
 		return identity;
 	}
 
-	Matrix4f Matrix4f::Translation(Vector3f& position)
+	Matrix4f Matrix4f::Translation(const Vector3f& position)
 	{
 		return Matrix4f::Translation(position.x, position.y, position.z);
 	}
@@ -50,7 +50,7 @@ namespace STL
 		return result;
 	}
 
-	Matrix4f Matrix4f::Rotation(Vector3f& rotation)
+	Matrix4f Matrix4f::Rotation(const Vector3f& rotation)
 	{
 		return Matrix4f::Rotation(rotation.x, rotation.y, rotation.z);
 	}
@@ -116,7 +116,7 @@ namespace STL
 		return rz;
 	}
 
-	Matrix4f Matrix4f::Scale(Vector3f& scale)
+	Matrix4f Matrix4f::Scale(const Vector3f& scale)
 	{
 		return Matrix4f::Scale(scale.x, scale.y, scale.z);
 	}

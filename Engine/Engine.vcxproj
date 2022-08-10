@@ -227,6 +227,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Component\CameraComponent.h" />
     <ClInclude Include="Source\Renderer\Level.h" />
     <ClInclude Include="Source\Device\DepthStencilView.h" />
     <ClInclude Include="Source\Component\Actor.h" />
@@ -267,6 +268,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\Component\StaticMeshComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Component\CameraComponent.cpp" />
     <ClCompile Include="Source\Renderer\Level.cpp" />
     <ClCompile Include="Source\Device\DepthStencilView.cpp" />
     <ClCompile Include="Source\Component\Actor.cpp" />

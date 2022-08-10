@@ -3,10 +3,13 @@
 #include <Component/Actor.h>
 #include <Component/TransformComponent.h>
 #include <Component/StaticMeshComponent.h>
+#include <Component/CameraComponent.h>
 
 #include <Renderer/VertexDeclaration.h>
 
 #include <Math/MathHelper.h>
+
+#include <Core/Application.h> // 엔진 기능 사용을 위해.
 
 namespace STL
 {
@@ -17,7 +20,7 @@ namespace STL
 	DemoLevel::~DemoLevel()
 	{
 	}
-	void DemoLevel::Initialize(ID3D11Device* device)
+	void DemoLevel::Initialize(ID3D11Device* device, Application* engine)
 	{
 		VertexPositionColorUV vertices[] =
 		{
@@ -31,7 +34,7 @@ namespace STL
 
 		// actor1 구성.
 		Actor* actor = new Actor(device);
-		actor->Create(device);
+		//actor->Create(device);
 		actor->SetPosition(-0.5f, 0.0f, 0.0f);
 		actor->SetScale(0.5f, 0.5f, 1.0f);
 
@@ -42,7 +45,7 @@ namespace STL
 
 		// actor2 구성.
 		Actor* actor2 = new Actor(device);
-		actor2->Create(device);
+		//actor2->Create(device);
 		actor2->SetPosition(0.5f, 0.0f, 0.0f);
 		actor2->SetScale(0.5f, 0.5f, 1.0f);
 
@@ -51,8 +54,22 @@ namespace STL
 			indices, _countof(indices), sizeof(uint32));
 		actor2->AddComponent(meshComponent2);
 
+		// 카메라 추가.
+		Actor* cameraActor = new Actor(device);
+		cameraActor->SetPosition(0.0f, 0.0f, -1.0f);
+		cameraActor->AddComponent(new CameraComponent(
+			60.0f * MathHelper::Deg2Rad, // 시야각 설정 (반각이 60도. 전체 120도).
+			static_cast<uint32>(engine->Width()), // 가로 크기
+			static_cast<uint32>(engine->Height()), // 세로 크기.
+			0.1f, // 근평면 거리.
+			1000.0f // 원평면 거리.
+		));
+
 		// 레벨에 액터 추가
 		AddActor(actor);
 		AddActor(actor2);
+		AddActor(cameraActor);
+
+		Level::Initialize(device, engine);
 	}
 }
