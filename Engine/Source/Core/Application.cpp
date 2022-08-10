@@ -109,6 +109,12 @@ namespace STL
 			return 0;
 
 		case WM_SIZE:
+			// 최소화 확인.
+			if (wParam == SIZE_MINIMIZED)
+			{
+				return 0;
+			}
+
 			// 변경된 가로 세로 너비 구하기.
 			//uint32 width = static_cast<uint32>(LOWORD(lParam));
 			//uint32 height = static_cast<uint32>(HIWORD(lParam));
