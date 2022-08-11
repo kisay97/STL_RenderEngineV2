@@ -3,6 +3,7 @@
 #include <Core/Core.h>
 #include <Renderer/VertexShader.h>
 #include <Renderer/PixelShader.h>
+#include <Renderer/InputLayout.h>
 
 namespace STL
 {
@@ -28,5 +29,6 @@ namespace STL
 	protected:
 		VertexShader vertexShader;
 		PixelShader pixelShader;
+		InputLayout inputLayout;
 	};
 }

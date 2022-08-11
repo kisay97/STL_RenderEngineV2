@@ -262,6 +262,8 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\Component\CameraComponent.h" />
     <ClInclude Include="Source\Device\KeyboardInput.h" />
     <ClInclude Include="Source\Device\MouseInput.h" />
+    <ClInclude Include="Source\Material\Material.h" />
+    <ClInclude Include="Source\Material\TransformMaterial.h" />
     <ClInclude Include="Source\Renderer\Level.h" />
     <ClInclude Include="Source\Device\DepthStencilView.h" />
     <ClInclude Include="Source\Component\Actor.h" />
@@ -306,6 +308,8 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClCompile Include="Source\Component\CameraComponent.cpp" />
     <ClCompile Include="Source\Device\KeyboardInput.cpp" />
     <ClCompile Include="Source\Device\MouseInput.cpp" />
+    <ClCompile Include="Source\Material\Material.cpp" />
+    <ClCompile Include="Source\Material\TransformMaterial.cpp" />
     <ClCompile Include="Source\Renderer\Level.cpp" />
     <ClCompile Include="Source\Device\DepthStencilView.cpp" />
     <ClCompile Include="Source\Component\Actor.cpp" />

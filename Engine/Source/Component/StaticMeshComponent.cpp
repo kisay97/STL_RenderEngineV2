@@ -1,5 +1,6 @@
 #include "Core.h"
 #include "StaticMeshComponent.h"
+#include <Utility/ModelLoader.h>
 
 namespace STL
 {
@@ -27,8 +28,34 @@ namespace STL
 			indices, indexCount, indexByteWidth);
 	}
 
+	void StaticMeshComponent::SetStaticMesh(StaticMesh* staticMesh)
+	{
+		this->staticMesh = staticMesh;
+	}
+
+	void StaticMeshComponent::SetStaticMesh(ID3D11Device* device, const std::string& filename)
+	{
+		ModelLoader::LoadModel(device, filename, staticMesh);
+	}
+
+	void StaticMeshComponent::AddMaterial(Material* newMaterial)
+	{
+		staticMesh->AddMaterial(newMaterial);
+	}
+
+	void StaticMeshComponent::SetMaterial(Material* newMaterial, uint32 index)
+	{
+		staticMesh->SetMaterial(newMaterial, index);
+	}
+
+	Material& StaticMeshComponent::GetMaterial(uint32 index)
+	{
+		return staticMesh->GetMaterial(index);
+	}
+
 	void StaticMeshComponent::Create(ID3D11Device* device)
 	{
+		staticMesh->Initialize(device);
 	}
 
 	void StaticMeshComponent::Update(ID3D11DeviceContext* context, float deltaTime)

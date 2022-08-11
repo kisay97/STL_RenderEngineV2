@@ -81,4 +81,30 @@ namespace STL
 		{
 		}
 	};
+
+	struct ENGINE_API VertexPositionUV
+	{
+		Vector3f position;
+		Vector2f texCoord;
+
+		VertexPositionUV()
+			: position(), texCoord()
+		{
+		}
+
+		VertexPositionUV(
+			float x, float y, float z,
+			float u, float v)
+			: position(x, y, z), texCoord(u, v)
+		{
+		}
+
+		VertexPositionUV(
+			const Vector3f& position,
+			const Vector2f& uv)
+			: position(position.x, position.y, position.z),
+			texCoord(uv.x, uv.y)
+		{
+		}
+	};
 }
