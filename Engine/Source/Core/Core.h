@@ -5,6 +5,9 @@
 #define UNICODE
 #endif
 
+#define NOMINMAX
+#define WIN32_LEAN_AND_MEAN //Windows.h에서 안쓰는걸 포함 안해줘서 좀 가볍게 쓸 수 있음.
+
 // 미봉책. (DLL 뽑는 코드에 STL 쓰면 4251 워닝나는데, 문제될 게 없으므로 Warning을 꺼버린다.)
 // 정석대로 할려면 https://mgun.tistory.com/681 참고
 #pragma warning(disable:4251)
