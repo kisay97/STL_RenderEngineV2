@@ -115,7 +115,13 @@ if not exist "$(SolutionDir)Shader" mkdir "$(SolutionDir)Shader"
 copy "$(ProjectDir)Shader\*.hlsl" "$(SolutionDir)Shader\"
 
 if not exist "$(OutDir)..\Shader" mkdir "$(OutDir)..\Shader"
-copy "$(ProjectDir)Shader\*.hlsl" "$(OutDir)..\Shader\"</Command>
+copy "$(ProjectDir)Shader\*.hlsl" "$(OutDir)..\Shader\"
+
+if not exist "$(OutDir)..\Content" mkdir "$(OutDir)..\Content"
+if not exist "$(OutDir)..\Content\Textures" mkdir "$(OutDir)..\Content\Textures"
+if not exist "$(OutDir)..\Content\Models" mkdir "$(OutDir)..\Content\Models"
+copy "$(SolutionDir)Content\Textures" "$(Outdir)..\Content\Textures"
+copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy "$(OutDir)Engine.dll" "$(OutDir)..\Game\"
@@ -151,7 +157,13 @@ if not exist "$(SolutionDir)Shader" mkdir "$(SolutionDir)Shader"
 copy "$(ProjectDir)Shader\*.hlsl" "$(SolutionDir)Shader\"
 
 if not exist "$(OutDir)..\Shader" mkdir "$(OutDir)..\Shader"
-copy "$(ProjectDir)Shader\*.hlsl" "$(OutDir)..\Shader\"</Command>
+copy "$(ProjectDir)Shader\*.hlsl" "$(OutDir)..\Shader\"
+
+if not exist "$(OutDir)..\Content" mkdir "$(OutDir)..\Content"
+if not exist "$(OutDir)..\Content\Textures" mkdir "$(OutDir)..\Content\Textures"
+if not exist "$(OutDir)..\Content\Models" mkdir "$(OutDir)..\Content\Models"
+copy "$(SolutionDir)Content\Textures" "$(Outdir)..\Content\Textures"
+copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy "$(OutDir)Engine.dll" "$(OutDir)..\Game\"
@@ -183,7 +195,13 @@ if not exist "$(SolutionDir)Shader" mkdir "$(SolutionDir)Shader"
 copy "$(ProjectDir)Shader\*.hlsl" "$(SolutionDir)Shader\"
 
 if not exist "$(OutDir)..\Shader" mkdir "$(OutDir)..\Shader"
-copy "$(ProjectDir)Shader\*.hlsl" "$(OutDir)..\Shader\"</Command>
+copy "$(ProjectDir)Shader\*.hlsl" "$(OutDir)..\Shader\"
+
+if not exist "$(OutDir)..\Content" mkdir "$(OutDir)..\Content"
+if not exist "$(OutDir)..\Content\Textures" mkdir "$(OutDir)..\Content\Textures"
+if not exist "$(OutDir)..\Content\Models" mkdir "$(OutDir)..\Content\Models"
+copy "$(SolutionDir)Content\Textures" "$(Outdir)..\Content\Textures"
+copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy "$(OutDir)Engine.dll" "$(OutDir)..\Game\"
@@ -219,7 +237,13 @@ if not exist "$(SolutionDir)Shader" mkdir "$(SolutionDir)Shader"
 copy "$(ProjectDir)Shader\*.hlsl" "$(SolutionDir)Shader\"
 
 if not exist "$(OutDir)..\Shader" mkdir "$(OutDir)..\Shader"
-copy "$(ProjectDir)Shader\*.hlsl" "$(OutDir)..\Shader\"</Command>
+copy "$(ProjectDir)Shader\*.hlsl" "$(OutDir)..\Shader\"
+
+if not exist "$(OutDir)..\Content" mkdir "$(OutDir)..\Content"
+if not exist "$(OutDir)..\Content\Textures" mkdir "$(OutDir)..\Content\Textures"
+if not exist "$(OutDir)..\Content\Models" mkdir "$(OutDir)..\Content\Models"
+copy "$(SolutionDir)Content\Textures" "$(Outdir)..\Content\Textures"
+copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy "$(OutDir)Engine.dll" "$(OutDir)..\Game\"
