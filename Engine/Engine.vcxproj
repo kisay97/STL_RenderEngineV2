@@ -121,7 +121,9 @@ if not exist "$(OutDir)..\Content" mkdir "$(OutDir)..\Content"
 if not exist "$(OutDir)..\Content\Textures" mkdir "$(OutDir)..\Content\Textures"
 if not exist "$(OutDir)..\Content\Models" mkdir "$(OutDir)..\Content\Models"
 copy "$(SolutionDir)Content\Textures" "$(Outdir)..\Content\Textures"
-copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"</Command>
+copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"
+
+copy "$(SolutionDir)Lib\Assimp\$(Platform)\$(Configuration)\*.dll" "$(OutDir)..\Game\"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy "$(OutDir)Engine.dll" "$(OutDir)..\Game\"
@@ -163,7 +165,9 @@ if not exist "$(OutDir)..\Content" mkdir "$(OutDir)..\Content"
 if not exist "$(OutDir)..\Content\Textures" mkdir "$(OutDir)..\Content\Textures"
 if not exist "$(OutDir)..\Content\Models" mkdir "$(OutDir)..\Content\Models"
 copy "$(SolutionDir)Content\Textures" "$(Outdir)..\Content\Textures"
-copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"</Command>
+copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"
+
+copy "$(SolutionDir)Lib\Assimp\$(Platform)\$(Configuration)\*.dll" "$(OutDir)..\Game\"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy "$(OutDir)Engine.dll" "$(OutDir)..\Game\"
@@ -201,7 +205,9 @@ if not exist "$(OutDir)..\Content" mkdir "$(OutDir)..\Content"
 if not exist "$(OutDir)..\Content\Textures" mkdir "$(OutDir)..\Content\Textures"
 if not exist "$(OutDir)..\Content\Models" mkdir "$(OutDir)..\Content\Models"
 copy "$(SolutionDir)Content\Textures" "$(Outdir)..\Content\Textures"
-copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"</Command>
+copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"
+
+copy "$(SolutionDir)Lib\Assimp\$(Platform)\$(Configuration)\*.dll" "$(OutDir)..\Game\"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy "$(OutDir)Engine.dll" "$(OutDir)..\Game\"
@@ -243,7 +249,9 @@ if not exist "$(OutDir)..\Content" mkdir "$(OutDir)..\Content"
 if not exist "$(OutDir)..\Content\Textures" mkdir "$(OutDir)..\Content\Textures"
 if not exist "$(OutDir)..\Content\Models" mkdir "$(OutDir)..\Content\Models"
 copy "$(SolutionDir)Content\Textures" "$(Outdir)..\Content\Textures"
-copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"</Command>
+copy "$(SolutionDir)Content\Models" "$(Outdir)..\Content\Models"
+
+copy "$(SolutionDir)Lib\Assimp\$(Platform)\$(Configuration)\*.dll" "$(OutDir)..\Game\"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy "$(OutDir)Engine.dll" "$(OutDir)..\Game\"
