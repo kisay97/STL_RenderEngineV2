@@ -167,6 +167,8 @@
     <ClCompile Include="DemoLevel.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SoldierActor.cpp" />
+    <ClCompile Include="SquidGameActor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -177,6 +179,8 @@
     <ClInclude Include="CameraController.h" />
     <ClInclude Include="DemoLevel.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="SoldierActor.h" />
+    <ClInclude Include="SquidGameActor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

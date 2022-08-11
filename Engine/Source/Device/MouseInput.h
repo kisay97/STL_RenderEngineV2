@@ -23,7 +23,7 @@ namespace STL
 	class ENGINE_API MouseInput
 	{
 	public:
-		MouseInput(HWND handle, MouseMode mode = MouseMode::Relative);
+		MouseInput(HWND handle, MouseMode mode = MouseMode::Absolute);
 		~MouseInput();
 
 		static DirectX::Mouse* Mouse();

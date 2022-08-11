@@ -4,6 +4,8 @@
 
 namespace STL
 {
+	// 전방선언.
+	class Material;
 	class DemoLevel : public Level
 	{
 	public:
@@ -11,5 +13,7 @@ namespace STL
 		~DemoLevel();
 
 		void Initialize(ID3D11Device* device, Application* engine) override;
+
+		std::vector<Material*> materials;
 	};
 }

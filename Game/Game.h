@@ -44,14 +44,14 @@ namespace STL
 	private:
 		//VertexBuffer vertexBuffer;
 		//IndexBuffer indexBuffer;
-		InputLayout inputLayout;
-		STLTransformShader mainShader;
+		//InputLayout inputLayout;
+		//STLTransformShader mainShader;
 
-		// 텍스처 매핑 관련.
-		Texture texture;
-		Texture texture2;
-		Texture texture3;
-		SamplerState samplerState;
+		//// 텍스처 매핑 관련.
+		//Texture texture;
+		//Texture texture2;
+		//Texture texture3;
+		//SamplerState samplerState;
 
 		DemoLevel mainLevel;
 
