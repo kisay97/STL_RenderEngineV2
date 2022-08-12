@@ -82,6 +82,37 @@ namespace STL
 		}
 	};
 
+	struct ENGINE_API VertexPositionColorUVNormal
+	{
+		Vector3f position;
+		Vector3f color;
+		Vector2f texCoord;
+		Vector3f normal;
+
+		VertexPositionColorUVNormal()
+			: position(), color(), texCoord(), normal()
+		{
+		}
+
+		VertexPositionColorUVNormal(
+			float x, float y, float z,
+			float r, float g, float b,
+			float u, float v,
+			float nx, float ny, float nz)
+			: position(x, y, z), color(r, g, b), texCoord(u, v), normal(nx, ny, nz)
+		{
+		}
+
+		VertexPositionColorUVNormal(
+			const Vector3f& position,
+			const Vector3f& color,
+			const Vector2f& uv,
+			const Vector3f& normal)
+			: position(position), color(color), texCoord(uv), normal(normal)
+		{
+		}
+	};
+
 	struct ENGINE_API VertexPositionUV
 	{
 		Vector3f position;

@@ -13,6 +13,7 @@ struct VSOutput
 	float4 position : SV_POSITION;
 	float3 color : COLOR;
 	float2 texCoord : TEXCOORD;
+	float3 normal : NORMAL;
 };
 
 // 상수 버퍼.
@@ -46,6 +47,9 @@ VSOutput main(VSInput input)
 
 	output.color = input.color;
 	output.texCoord = input.texCoord;
+
+	// 노멀도 로컬 -> 월드 공간으로 변환.
+	output.normal = mul(input.normal, (float3x3)world);
 
 	return output;
 }

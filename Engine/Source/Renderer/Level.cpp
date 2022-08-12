@@ -2,10 +2,12 @@
 #include "Level.h"
 #include <Component/Actor.h>
 #include <Component/CameraComponent.h>
+#include <Component/LightComponent.h>
 
 namespace STL
 {
 	Level::Level()
+		: mainCamera(nullptr), mainLight(nullptr)
 	{
 	}
 
@@ -31,6 +33,13 @@ namespace STL
 			return;
 		}
 
+		auto light = actor->GetComponent<LightComponent>();
+		if (light != nullptr)
+		{
+			mainLight = actor;
+			return;
+		}
+
 		actors.emplace_back(actor);
 	}
 
@@ -38,6 +47,12 @@ namespace STL
 	{
 		// 카메라 초기화.
 		mainCamera->Create(device);
+
+		if (mainLight != nullptr)
+		{
+			// 라이트 초기화.
+			mainLight->Create(device);
+		}
 
 		// 액터가 가진 모든 컴포넌트 초기화.
 		for (auto actor : actors)
@@ -51,6 +66,12 @@ namespace STL
 		// 카메라 업데이트.
 		mainCamera->Update(context, deltaTime);
 
+		if (mainLight != nullptr)
+		{
+			// 라이트 업데이트.
+			mainLight->Update(context, deltaTime);
+		}
+
 		// 액터가 가진 모든 컴포넌트 업데이트.
 		for (auto actor : actors)
 		{
@@ -60,8 +81,14 @@ namespace STL
 
 	void Level::Bind(ID3D11DeviceContext* context)
 	{
-		// 카메라 바인딩
+		// 카메라 바인딩.
 		mainCamera->Bind(context);
+
+		if (mainLight != nullptr)
+		{
+			// 라이트 바인딩.
+			mainLight->Bind(context);
+		}
 
 		for (auto actor : actors)
 		{
@@ -71,8 +98,14 @@ namespace STL
 
 	void Level::Draw(ID3D11DeviceContext* context)
 	{
-		// 카메라 바인딩(카메라 안보여서 그리진 않지만, 그리기 전에 바인딩는 해줘야함)
+		// 카메라 바인딩.
 		mainCamera->Bind(context);
+
+		if (mainLight != nullptr)
+		{
+			// 라이트 바인딩.
+			mainLight->Bind(context);
+		}
 
 		for (auto actor : actors)
 		{

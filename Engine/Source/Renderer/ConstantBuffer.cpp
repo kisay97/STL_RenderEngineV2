@@ -5,12 +5,12 @@
 namespace STL
 {
 	ConstantBuffer::ConstantBuffer()
-		: Buffer()
+		: Buffer(), bindShaderTarget(BindShaderTarget::VertexShader)
 	{
 	}
 
 	ConstantBuffer::ConstantBuffer(void* data, size_t count, uint32 byteWidth)
-		: Buffer(data, count, byteWidth)
+		: Buffer(data, count, byteWidth), bindShaderTarget(BindShaderTarget::VertexShader)
 	{
 	}
 
@@ -47,7 +47,19 @@ namespace STL
 
 	void ConstantBuffer::Bind(ID3D11DeviceContext* context, uint32 index)
 	{
-		context->VSSetConstantBuffers(index, 1, &buffer);
+		if (bindShaderTarget == BindShaderTarget::VertexShader) 
+		{
+			context->VSSetConstantBuffers(index, 1, &buffer);
+		}
+		else if (bindShaderTarget == BindShaderTarget::PixelShader)
+		{
+			context->PSSetConstantBuffers(index, 1, &buffer);
+		}
+	}
+
+	void ConstantBuffer::SetBindShaderTarget(BindShaderTarget bindShaderTarget)
+	{
+		this->bindShaderTarget = bindShaderTarget;
 	}
 
 	void ConstantBuffer::Bind(ID3D11DeviceContext* context)

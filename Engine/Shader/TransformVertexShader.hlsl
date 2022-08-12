@@ -4,6 +4,7 @@ struct VSInput
 	float3 position : POSITION;
 	float3 color : COLOR;
 	float2 texCoord : TEXCOORD;
+	float3 normal : NORMAL;
 };
 
 // 정점 쉐이더 출력 -> 픽셀 쉐이더의 입력.

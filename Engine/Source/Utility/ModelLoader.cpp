@@ -1,6 +1,7 @@
 #include "Core.h"
 #include "ModelLoader.h"
 #include <Utility/STLException.h>
+#include <Material/TransformMaterial.h>
 
 namespace STL
 {
@@ -116,7 +117,7 @@ namespace STL
 
 	void ModelLoader::ProcessMesh(ID3D11Device* device, const aiMesh* mesh, const aiScene* scene, StaticMesh* outMesh)
 	{
-		std::vector<VertexPositionColorUV> vertices;
+		std::vector<VertexPositionColorUVNormal> vertices;
 		//std::vector<VertexPositionUV> vertices;
 		std::vector<uint32> indices;
 		std::vector<std::wstring> textures;
@@ -141,7 +142,7 @@ namespace STL
 			Vector3f binormal;
 			LoadTangentAndBiNormal(mesh, ix, tangent, binormal);
 
-			VertexPositionColorUV vertex(position, color, uv);
+			VertexPositionColorUVNormal vertex(position, color, uv, normal);
 			vertices.emplace_back(vertex);
 			//VertexPositionUV vertex(position, uv);
 			//vertices.emplace_back(vertex);
@@ -160,9 +161,18 @@ namespace STL
 		//aiString diffusePath;
 		//aiGetMaterialTexture(material, aiTextureType::aiTextureType_DIFFUSE, 0, &diffusePath);
 
+		//TransformMaterial* transformMaterial = nullptr;
 		//if (diffusePath != aiString(""))
 		//{
 		//	textures.emplace_back(GetFileNameOnly(diffusePath));
+		//	transformMaterial = new TransformMaterial();
+		//	transformMaterial->AddTexture(new Texture(textures[textures.size() - 1]));
+		//}
+
+		//if (transformMaterial != nullptr)
+		//{
+		//	outMesh->AddMaterial(transformMaterial);
+		//	transformMaterial->Initialize(device);
 		//}
 
 		//SubMesh* outMesh = new SubMesh();
