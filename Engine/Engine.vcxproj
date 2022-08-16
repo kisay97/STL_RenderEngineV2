@@ -260,6 +260,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Source\EngineShader\STLDiffuseSpecularShader.h" />
+    <ClInclude Include="Source\EngineShader\STLNormalMappingShader.h" />
     <ClInclude Include="Source\Material\DiffuseMaterial.h" />
     <ClInclude Include="Source\Component\CameraComponent.h" />
     <ClInclude Include="Source\Component\LightComponent.h" />
@@ -267,6 +268,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\Device\MouseInput.h" />
     <ClInclude Include="Source\Material\DiffuseSpecularMaterial.h" />
     <ClInclude Include="Source\Material\Material.h" />
+    <ClInclude Include="Source\Material\NormalMappingMaterial.h" />
     <ClInclude Include="Source\Material\TransformMaterial.h" />
     <ClInclude Include="Source\Renderer\Level.h" />
     <ClInclude Include="Source\Device\DepthStencilView.h" />
@@ -311,6 +313,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\EngineShader\STLDiffuseSpecularShader.cpp" />
+    <ClCompile Include="Source\EngineShader\STLNormalMappingShader.cpp" />
     <ClCompile Include="Source\Material\DiffuseMaterial.cpp" />
     <ClCompile Include="Source\Component\CameraComponent.cpp" />
     <ClCompile Include="Source\Component\LightComponent.cpp" />
@@ -318,6 +321,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClCompile Include="Source\Device\MouseInput.cpp" />
     <ClCompile Include="Source\Material\DiffuseSpecularMaterial.cpp" />
     <ClCompile Include="Source\Material\Material.cpp" />
+    <ClCompile Include="Source\Material\NormalMappingMaterial.cpp" />
     <ClCompile Include="Source\Material\TransformMaterial.cpp" />
     <ClCompile Include="Source\Renderer\Level.cpp" />
     <ClCompile Include="Source\Device\DepthStencilView.cpp" />
@@ -386,6 +390,14 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\NormalMappingPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\NormalMappingVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
     </FxCompile>
     <FxCompile Include="Shader\PixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>

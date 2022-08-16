@@ -82,6 +82,46 @@ namespace STL
 		}
 	};
 
+	struct ENGINE_API VertexPositionColorUVNormalTangentBinormal
+	{
+		Vector3f position;
+		Vector3f color;
+		Vector2f texCoord;
+		Vector3f normal;
+		Vector3f binormal;
+		Vector3f tangent;
+
+		VertexPositionColorUVNormalTangentBinormal()
+			: position(), color(), texCoord(), normal(), binormal(), tangent()
+		{
+		}
+
+		VertexPositionColorUVNormalTangentBinormal(
+			float x, float y, float z,
+			float r, float g, float b,
+			float u, float v,
+			float nx, float ny, float nz,
+			float bx, float by, float bz,
+			float tx, float ty, float tz)
+			: position(x, y, z), color(r, g, b), 
+			texCoord(u, v), normal(nx, ny, nz),
+			binormal(bx, by, bz), tangent(tx, ty, tz)
+		{
+		}
+
+		VertexPositionColorUVNormalTangentBinormal(
+			const Vector3f& position,
+			const Vector3f& color,
+			const Vector2f& uv,
+			const Vector3f& normal,
+			const Vector3f& binormal,
+			const Vector3f& tangent)
+			: position(position), color(color), texCoord(uv), 
+			normal(normal), binormal(binormal), tangent(tangent)
+		{
+		}
+	};
+
 	struct ENGINE_API VertexPositionColorUVNormal
 	{
 		Vector3f position;

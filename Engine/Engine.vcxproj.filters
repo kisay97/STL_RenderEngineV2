@@ -162,6 +162,12 @@
     <ClInclude Include="Source\Material\DiffuseSpecularMaterial.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Material\NormalMappingMaterial.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EngineShader\STLNormalMappingShader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\Core.cpp">
@@ -305,6 +311,12 @@
     <ClCompile Include="Source\Material\DiffuseSpecularMaterial.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Material\NormalMappingMaterial.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EngineShader\STLNormalMappingShader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\VertexShader.hlsl" />
@@ -319,6 +331,8 @@
     <FxCompile Include="Shader\DiffusePixelShader.hlsl" />
     <FxCompile Include="Shader\DiffuseSpecularPixelShader.hlsl" />
     <FxCompile Include="Shader\DiffuseSpecularVertexShader.hlsl" />
+    <FxCompile Include="Shader\NormalMappingPixelShader.hlsl" />
+    <FxCompile Include="Shader\NormalMappingVertexShader.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Common.hlsl" />

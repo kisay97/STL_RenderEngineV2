@@ -117,7 +117,7 @@ namespace STL
 
 	void ModelLoader::ProcessMesh(ID3D11Device* device, const aiMesh* mesh, const aiScene* scene, StaticMesh* outMesh)
 	{
-		std::vector<VertexPositionColorUVNormal> vertices;
+		std::vector<VertexPositionColorUVNormalTangentBinormal> vertices;
 		//std::vector<VertexPositionUV> vertices;
 		std::vector<uint32> indices;
 		std::vector<std::wstring> textures;
@@ -142,7 +142,9 @@ namespace STL
 			Vector3f binormal;
 			LoadTangentAndBiNormal(mesh, ix, tangent, binormal);
 
-			VertexPositionColorUVNormal vertex(position, color, uv, normal);
+			VertexPositionColorUVNormalTangentBinormal vertex(
+				position, color, uv, normal, binormal, tangent
+			);
 			vertices.emplace_back(vertex);
 			//VertexPositionUV vertex(position, uv);
 			//vertices.emplace_back(vertex);

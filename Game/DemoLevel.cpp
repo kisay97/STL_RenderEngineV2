@@ -17,6 +17,7 @@
 #include <Material/TransformMaterial.h>
 #include <Material/DiffuseMaterial.h>
 #include <Material/DiffuseSpecularMaterial.h>
+#include <Material/NormalMappingMaterial.h>
 
 #include <Utility/ModelLoader.h>
 
@@ -45,12 +46,12 @@ namespace STL
 
 	void DemoLevel::Initialize(ID3D11Device* device, Application* engine)
 	{
-		//VertexPositionColorUVNormal vertices[] =
+		//VertexPositionColorUV vertices[] =
 		//{
-		//	VertexPositionColorUVNormal({ -0.5f, -0.5f, 0.5f }, { 1.0f, 0.0f, 0.0f }, { 0.0f, 1.0f }, {0.0f, 0.0f, -1.0f}),		// 왼쪽 하단.
-		//	VertexPositionColorUVNormal({ -0.5f,  0.5f, 0.5f}, {0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f }, {0.0f, 0.0f, -1.0f}),		// 왼쪽 상단.
-		//	VertexPositionColorUVNormal({ 0.5f,  0.5f, 0.5f}, { 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f }, {0.0f, 0.0f, -1.0f}),		// 오른쪽 상단.
-		//	VertexPositionColorUVNormal({ 0.5f, -0.5f, 0.5f}, { 1.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }, {0.0f, 0.0f, -1.0f}),		// 오른쪽 하단.
+		//	VertexPositionColorUV({ -0.5f, -0.5f, 0.5f }, { 1.0f, 0.0f, 0.0f }, { 0.0f, 1.0f }),		// 왼쪽 하단.
+		//	VertexPositionColorUV({ -0.5f,  0.5f, 0.5f}, {0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f }),		// 왼쪽 상단.
+		//	VertexPositionColorUV({ 0.5f,  0.5f, 0.5f}, { 0.0f, 0.0f, 1.0f }, { 1.0f, 0.0f }),		// 오른쪽 상단.
+		//	VertexPositionColorUV({ 0.5f, -0.5f, 0.5f}, { 1.0f, 0.0f, 0.0f }, { 1.0f, 1.0f }),		// 오른쪽 하단.
 		//};
 
 		//uint32 indices[] = { 0, 1, 3, 1, 2, 3 };
@@ -58,6 +59,7 @@ namespace STL
 		//// 머티리얼 생성.
 		//TransformMaterial* transformMaterial = new TransformMaterial();
 		//transformMaterial->AddTexture(new Texture(L"sample.jpg"));
+		//transformMaterial->Initialize(device);
 		//materials.emplace_back(transformMaterial);
 
 		//// Actor1 구성.
@@ -133,12 +135,14 @@ namespace STL
 		auto squidGameMat1 = new DiffuseSpecularMaterial();
 		squidGameMat1->AddTexture(new Texture(L"PinkSoldier_BaseColor_1001.png"));
 		squidGameMat1->AddTexture(new Texture(L"PinkSoldier_BaseColor_1001.png"));
+		squidGameMat1->SetShiness(100.0f); // 블린 퐁 방식일 때 Shiness를 더 줘야 하는데(그냥 퐁 방식이면 32임) 100을 줌
 		squidGameMat1->Initialize(device);
 		materials.emplace_back(squidGameMat1);
 
 		auto squidGameMat2 = new DiffuseSpecularMaterial();
 		squidGameMat2->AddTexture(new Texture(L"PinkSoldier_BaseColor_1002.png"));
 		squidGameMat2->AddTexture(new Texture(L"PinkSoldier_BaseColor_1002.png"));
+		squidGameMat2->SetShiness(100.0f); // 블린 퐁 방식일 때 Shiness를 더 줘야 하는데(그냥 퐁 방식이면 32임) 100을 줌
 		squidGameMat2->Initialize(device);
 		materials.emplace_back(squidGameMat2);
 
@@ -147,6 +151,32 @@ namespace STL
 		squidGameActor->SetPosition(200.0f, 0.0f, 0.0f);
 		squidGameActor->SetStaticMesh(squidGameMesh);
 		squidGameActor->SetMaterials(squidGameMat1, squidGameMat2);
+
+		StaticMesh* squidGameMesh2 = new StaticMesh();
+		ModelLoader::LoadModel(device, "PinkSoldier_v01.fbx", squidGameMesh2);
+
+		// 머티리얼 생성.
+		auto squidGameMat3 = new NormalMappingMaterial();
+		squidGameMat3->AddTexture(new Texture(L"PinkSoldier_BaseColor_1001.png"));
+		squidGameMat3->AddTexture(new Texture(L"PinkSoldier_BaseColor_1001.png"));
+		squidGameMat3->AddTexture(new Texture(L"PinkSoldier_Normal_1001.png"));
+		squidGameMat3->SetShiness(100.0f);
+		squidGameMat3->Initialize(device);
+		materials.emplace_back(squidGameMat3);
+
+		auto squidGameMat4 = new NormalMappingMaterial();
+		squidGameMat4->AddTexture(new Texture(L"PinkSoldier_BaseColor_1002.png"));
+		squidGameMat4->AddTexture(new Texture(L"PinkSoldier_BaseColor_1002.png"));
+		squidGameMat4->AddTexture(new Texture(L"PinkSoldier_Normal_1002.png"));
+		squidGameMat4->SetShiness(100.0f);
+		squidGameMat4->Initialize(device);
+		materials.emplace_back(squidGameMat4);
+
+		// 액터 생성 및 설정.
+		SquidGameActor* squidGameActor2 = new SquidGameActor(device);
+		squidGameActor2->SetPosition(300.0f, 0.0f, 0.0f);
+		squidGameActor2->SetStaticMesh(squidGameMesh2);
+		squidGameActor2->SetMaterials(squidGameMat3, squidGameMat4);
 
 		// 라이트 액터 생성.
 		Actor* lightActor = new Actor(device);
@@ -161,6 +191,7 @@ namespace STL
 		AddActor(cameraActor);
 		AddActor(soldierActor);
 		AddActor(squidGameActor);
+		AddActor(squidGameActor2);
 		AddActor(lightActor);
 
 		Level::Initialize(device, engine);
