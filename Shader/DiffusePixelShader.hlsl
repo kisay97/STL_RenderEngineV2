@@ -34,7 +34,7 @@ float4 main(PSInput input) : SV_TARGET
 	// 조명 밝기 계산 - 노멀과 조명 방향 벡터와의 내적으로 cos(theta) 계산.
 	float diffusePower = dot(worldNormal, -lightDirection);
 	// 하프램버트
-	//diffusePower = pow(diffusePower * 0.5f + 0.5f, 2);
+	diffusePower = pow(diffusePower * 0.5f + 0.5f, 2);
 	// 조명 밝기에 조명 색상 적용.
 	float4 diffuse = float4(lightColor * diffusePower, 1);
 
