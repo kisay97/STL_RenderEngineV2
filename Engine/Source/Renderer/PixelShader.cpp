@@ -45,8 +45,8 @@ namespace STL
 #endif
 
 		// 쉐이더 파일 설정 (폴더 경로 포함).
-		static auto folderPath = shaderFolderPath;
-		static auto finalPath = folderPath.append(filename.c_str() + std::wstring(L".hlsl"));
+		auto folderPath = shaderFolderPath;
+		auto finalPath = folderPath.append(filename.c_str() + std::wstring(L".hlsl"));
 
 		// HLSL 쉐이더 컴파일.
 		auto result = D3DCompileFromFile(
