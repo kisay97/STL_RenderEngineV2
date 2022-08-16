@@ -152,6 +152,8 @@ namespace STL
 		Actor* lightActor = new Actor(device);
 		lightActor->SetPosition(500.0f, 500.0f, -500.0f);
 		lightActor->AddComponent(new LightComponent());
+		auto lightComponent = lightActor->GetComponent<LightComponent>();
+		lightComponent->SetLightColor({ 1.0f, 1.0f, 1.0f });
 
 		// 레벨에 액터 추가.
 		//AddActor(actor);

@@ -65,9 +65,9 @@ float4 main(PSInput input) : SV_TARGET
     float specularPower = ComputeBlinnPhong(
         diffusePower, worldNormal, lightDirection, input.cameraDirection, material.shiness);
 
-    float4 sepcular = float4(light.color * sepcularPower, 1);
+    float4 specular = float4(light.color * specularPower, 1);
 	
     // 최종 색상 계산.
-    float4 finalColor = (diffuse * diffuseMapColor) + (sepcular * specularMapColor);
+    float4 finalColor = (diffuse * diffuseMapColor) + (specular * specularMapColor);
     return finalColor;
 }
