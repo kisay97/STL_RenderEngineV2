@@ -107,14 +107,16 @@ namespace STL
 
 		// 머티리얼 생성.
 		auto soldierBodyMaterial = new DiffuseSpecularMaterial();
+		//auto soldierBodyMaterial = new DiffuseMaterial();
 		soldierBodyMaterial->AddTexture(new Texture(L"Soldier_Body_diffuse.png"));
-		//soldierBodyMaterial->AddTexture(new Texture(L"Soldier_Body_specular.png"));
+		soldierBodyMaterial->AddTexture(new Texture(L"Soldier_Body_specular.png"));
 		soldierBodyMaterial->Initialize(device);
 		materials.emplace_back(soldierBodyMaterial);
 
 		auto soldierHeadMaterial = new DiffuseSpecularMaterial();
+		//auto soldierHeadMaterial = new DiffuseMaterial();
 		soldierHeadMaterial->AddTexture(new Texture(L"Soldier_head_diffuse.png"));
-		//soldierHeadMaterial->AddTexture(new Texture(L"Soldier_head_specular.png"));
+		soldierHeadMaterial->AddTexture(new Texture(L"Soldier_head_specular.png"));
 		soldierHeadMaterial->Initialize(device);
 		materials.emplace_back(soldierHeadMaterial);
 

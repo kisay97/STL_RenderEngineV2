@@ -52,7 +52,7 @@ namespace STL
 		auto result = D3DCompileFromFile(
 			finalPath.c_str(),
 			nullptr,
-			D3D_COMPILE_STANDARD_FILE_INCLUDE,
+			D3D_COMPILE_STANDARD_FILE_INCLUDE, // 상대 경로에 있는 파일을 인클루드 하도록 설정함
 			entry.c_str(),
 			profile.c_str(),
 			compileFlags, 0u,
