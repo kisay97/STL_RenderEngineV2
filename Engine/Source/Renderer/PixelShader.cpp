@@ -39,6 +39,7 @@ namespace STL
 	void PixelShader::Compile(ID3D11Device* device)
 	{
 		uint32 compileFlags = 0u;
+
 #if _DEBUG
 		compileFlags |= D3DCOMPILE_DEBUG;
 #endif
@@ -51,7 +52,7 @@ namespace STL
 		auto result = D3DCompileFromFile(
 			finalPath.c_str(),
 			nullptr,
-			nullptr,
+			D3D_COMPILE_STANDARD_FILE_INCLUDE,
 			entry.c_str(),
 			profile.c_str(),
 			compileFlags, 0u,
