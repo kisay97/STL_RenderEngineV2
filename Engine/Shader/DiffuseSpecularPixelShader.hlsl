@@ -58,6 +58,26 @@ float4 main(PSInput input) : SV_TARGET
 	// 조명 밝기에 조명 색상 적용.
     float4 diffuse = float4(light.color * diffusePower, 1);
 
+    // 카툰 쉐이더(Cartoon) - 셀(Cell) 세이딩
+    float toonStep = 3;
+    //diffuse = ceil(diffuse * toonStep) / toonStep;
+    float4 white = float4(1, 1, 1, 1);
+    float4 gray = float4(0.3, 0.3, 0.3, 1);
+    float4 darkGray = float4(0.1, 0.1, 0.1, 1);
+    if (diffusePower > 0)
+    {
+        diffuse = darkGray;
+    }
+    if (diffusePower > 0.4)
+    {
+        diffuse = gray;
+    }
+    if (diffusePower > 0.8)
+    {
+        diffuse = white;
+    }
+    diffuse = diffuse * diffuseMapColor;
+
 	// 스페큘러 - 퐁.
     input.cameraDirection = normalize(input.cameraDirection);
     //float specularPower = ComputePhong(
@@ -66,6 +86,7 @@ float4 main(PSInput input) : SV_TARGET
         diffusePower, worldNormal, lightDirection, input.cameraDirection, material.shiness);
 
     float4 specular = float4(light.color * specularPower, 1);
+    //specular = ceil(specular * toonStep) / toonStep;
 	
     // 최종 색상 계산.
     float4 finalColor = (diffuse * diffuseMapColor) + (specular * specularMapColor);
