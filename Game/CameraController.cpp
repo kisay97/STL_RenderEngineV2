@@ -21,6 +21,15 @@ namespace STL
 
 	void CameraController::MoveCamera(float deltaTime)
 	{
+		// 속도 조절해보기
+		if (mouse->IsWheelUp()) {
+			moveSpeed += 10;
+		}
+		else if (mouse->IsWheelDown()) {
+			moveSpeed -= 10;
+			if (moveSpeed <= 10) moveSpeed = 10;
+		}
+
 		float moveAmount = moveSpeed * deltaTime;
 		if (keyboard->IsKeyDown(Keys::A))
 		{

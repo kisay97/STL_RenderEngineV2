@@ -42,6 +42,8 @@ namespace STL
 		int DeltaY() const;
 		int Wheel() const;
 
+		bool IsWheelUp() const;
+		bool IsWheelDown() const;
 		bool IsButtonUp(MouseButtons button) const;
 		bool IsButtonDown(MouseButtons button) const;
 		bool WasButtonUp(MouseButtons button) const;

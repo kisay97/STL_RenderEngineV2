@@ -88,6 +88,16 @@ namespace STL
 		return currentState.scrollWheelValue;
 	}
 
+	bool MouseInput::IsWheelUp() const
+	{
+		return currentState.scrollWheelValue > previousState.scrollWheelValue;
+	}
+
+	bool MouseInput::IsWheelDown() const
+	{
+		return currentState.scrollWheelValue < previousState.scrollWheelValue;
+	}
+
 	bool MouseInput::IsButtonUp(MouseButtons button) const
 	{
 		return GetButtonState(currentState, button) == false;
