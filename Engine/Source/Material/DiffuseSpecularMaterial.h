@@ -1,23 +1,12 @@
 #pragma once
 
 #include <Core/Core.h>
-#include <Math/Vector3f.h>
 #include <Renderer/ConstantBuffer.h>
+#include "MaterialConstants.h"
 #include "Material.h"
 
 namespace STL
 {
-	struct MaterialData
-	{
-		MaterialData() 
-			: shiness(32.0f), padding()
-		{
-		}
-
-		float shiness;
-		Vector3f padding;
-	};
-
 	class ENGINE_API DiffuseSpecularMaterial : public Material
 	{
 	public:

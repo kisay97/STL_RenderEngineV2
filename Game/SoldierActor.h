@@ -14,6 +14,8 @@ namespace STL
 		SoldierActor(ID3D11Device* device, const std::wstring& name = L"Actor");
 		virtual ~SoldierActor();
 
+		virtual void Update(ID3D11DeviceContext* context, float deltaTime = 0.f) override;
+
 		void SetStaticMesh(StaticMesh* mesh);
 		void SetMaterial(Material* bodyMaterial, Material* headMaterial);
 	};

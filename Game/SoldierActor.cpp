@@ -1,4 +1,5 @@
 #include "SoldierActor.h"
+#include <Math/Vector3f.h>
 
 namespace STL
 {
@@ -10,6 +11,21 @@ namespace STL
 
 	SoldierActor::~SoldierActor()
 	{
+	}
+
+	void SoldierActor::Update(ID3D11DeviceContext* context, float deltaTime)
+	{
+		Actor::Update(context, deltaTime);
+		
+		// 돌리고 돌리고
+		//auto rotation = Rotation();
+		//rotation.z -= 2880.0f * deltaTime;
+		//if (rotation.z >= 360.0f || rotation.z <= -360.0f)
+		//{
+		//	rotation.z = 0.0f;
+		//}
+		//
+		//SetRotation(rotation);
 	}
 	
 	void SoldierActor::SetStaticMesh(StaticMesh* mesh)

@@ -4,6 +4,7 @@
 #include <Renderer/VertexShader.h>
 #include <Renderer/PixelShader.h>
 #include <Renderer/InputLayout.h>
+#include <Renderer/RasterizerState.h>
 
 namespace STL
 {
@@ -30,5 +31,6 @@ namespace STL
 		VertexShader vertexShader;
 		PixelShader pixelShader;
 		InputLayout inputLayout;
+		RasterizerState rasterizerState;
 	};
 }

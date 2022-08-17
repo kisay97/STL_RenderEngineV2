@@ -259,8 +259,12 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\EngineShader\STLCubeMappingShader.h" />
     <ClInclude Include="Source\EngineShader\STLDiffuseSpecularShader.h" />
     <ClInclude Include="Source\EngineShader\STLNormalMappingShader.h" />
+    <ClInclude Include="Source\EngineShader\STLRimNormalMappingShader.h" />
+    <ClInclude Include="Source\EngineShader\STLRimShader.h" />
+    <ClInclude Include="Source\Material\CubeMapMaterial.h" />
     <ClInclude Include="Source\Material\DiffuseMaterial.h" />
     <ClInclude Include="Source\Component\CameraComponent.h" />
     <ClInclude Include="Source\Component\LightComponent.h" />
@@ -268,7 +272,10 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\Device\MouseInput.h" />
     <ClInclude Include="Source\Material\DiffuseSpecularMaterial.h" />
     <ClInclude Include="Source\Material\Material.h" />
+    <ClInclude Include="Source\Material\MaterialConstants.h" />
     <ClInclude Include="Source\Material\NormalMappingMaterial.h" />
+    <ClInclude Include="Source\Material\RimMaterial.h" />
+    <ClInclude Include="Source\Material\RimNormalMappingMaterial.h" />
     <ClInclude Include="Source\Material\TransformMaterial.h" />
     <ClInclude Include="Source\Renderer\Level.h" />
     <ClInclude Include="Source\Device\DepthStencilView.h" />
@@ -284,6 +291,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\EngineShader\STLDefaultShader.h" />
     <ClInclude Include="Source\EngineShader\STLShader.h" />
     <ClInclude Include="Source\Renderer\PixelShader.h" />
+    <ClInclude Include="Source\Renderer\RasterizerState.h" />
     <ClInclude Include="Source\Renderer\SamplerState.h" />
     <ClInclude Include="Source\Renderer\Shader.h" />
     <ClInclude Include="Source\Renderer\Buffer.h" />
@@ -312,8 +320,12 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClInclude Include="Source\EngineShader\STLDiffuseShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\EngineShader\STLCubeMappingShader.cpp" />
     <ClCompile Include="Source\EngineShader\STLDiffuseSpecularShader.cpp" />
     <ClCompile Include="Source\EngineShader\STLNormalMappingShader.cpp" />
+    <ClCompile Include="Source\EngineShader\STLRimNormalMappingShader.cpp" />
+    <ClCompile Include="Source\EngineShader\STLRimShader.cpp" />
+    <ClCompile Include="Source\Material\CubeMapMaterial.cpp" />
     <ClCompile Include="Source\Material\DiffuseMaterial.cpp" />
     <ClCompile Include="Source\Component\CameraComponent.cpp" />
     <ClCompile Include="Source\Component\LightComponent.cpp" />
@@ -321,7 +333,10 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClCompile Include="Source\Device\MouseInput.cpp" />
     <ClCompile Include="Source\Material\DiffuseSpecularMaterial.cpp" />
     <ClCompile Include="Source\Material\Material.cpp" />
+    <ClCompile Include="Source\Material\MaterialConstants.cpp" />
     <ClCompile Include="Source\Material\NormalMappingMaterial.cpp" />
+    <ClCompile Include="Source\Material\RimMaterial.cpp" />
+    <ClCompile Include="Source\Material\RimNormalMappingMaterial.cpp" />
     <ClCompile Include="Source\Material\TransformMaterial.cpp" />
     <ClCompile Include="Source\Renderer\Level.cpp" />
     <ClCompile Include="Source\Device\DepthStencilView.cpp" />
@@ -336,6 +351,7 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <ClCompile Include="Source\EngineShader\STLDefaultShader.cpp" />
     <ClCompile Include="Source\EngineShader\STLShader.cpp" />
     <ClCompile Include="Source\Renderer\PixelShader.cpp" />
+    <ClCompile Include="Source\Renderer\RasterizerState.cpp" />
     <ClCompile Include="Source\Renderer\SamplerState.cpp" />
     <ClCompile Include="Source\Renderer\Shader.cpp" />
     <ClCompile Include="Source\Renderer\Buffer.cpp" />
@@ -371,6 +387,14 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
     <None Include="Shader\Common.hlsl">
       <FileType>Document</FileType>
     </None>
+    <FxCompile Include="Shader\CubeMapPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\CubeMapVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+    </FxCompile>
     <FxCompile Include="Shader\DiffusePixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
@@ -428,6 +452,22 @@ copy "$(OutDir)Engine.lib" "$(SolutionDir)Lib\Engine\$(Platform)\$(Configuration
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\RimNormalMappingPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\RimNormalMappingVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\RimPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Shader\RimVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
     </FxCompile>
     <FxCompile Include="Shader\TransformPixelShader.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>

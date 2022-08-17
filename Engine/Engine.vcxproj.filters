@@ -168,6 +168,30 @@
     <ClInclude Include="Source\EngineShader\STLNormalMappingShader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Source\EngineShader\STLCubeMappingShader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EngineShader\STLRimNormalMappingShader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\EngineShader\STLRimShader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material\CubeMapMaterial.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material\MaterialConstants.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material\RimMaterial.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Material\RimNormalMappingMaterial.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\RasterizerState.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\Core.cpp">
@@ -317,6 +341,30 @@
     <ClCompile Include="Source\EngineShader\STLNormalMappingShader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Source\EngineShader\STLRimNormalMappingShader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EngineShader\STLRimShader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\EngineShader\STLCubeMappingShader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Material\CubeMapMaterial.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Material\MaterialConstants.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Material\RimMaterial.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Material\RimNormalMappingMaterial.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\RasterizerState.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shader\VertexShader.hlsl" />
@@ -333,6 +381,12 @@
     <FxCompile Include="Shader\DiffuseSpecularVertexShader.hlsl" />
     <FxCompile Include="Shader\NormalMappingPixelShader.hlsl" />
     <FxCompile Include="Shader\NormalMappingVertexShader.hlsl" />
+    <FxCompile Include="Shader\CubeMapPixelShader.hlsl" />
+    <FxCompile Include="Shader\CubeMapVertexShader.hlsl" />
+    <FxCompile Include="Shader\RimNormalMappingPixelShader.hlsl" />
+    <FxCompile Include="Shader\RimNormalMappingVertexShader.hlsl" />
+    <FxCompile Include="Shader\RimPixelShader.hlsl" />
+    <FxCompile Include="Shader\RimVertexShader.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\Common.hlsl" />

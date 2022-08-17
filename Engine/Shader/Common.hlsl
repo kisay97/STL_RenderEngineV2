@@ -1,3 +1,4 @@
+// 램버트 쉐이더 - 디퓨즈.
 float ComputeLambert(float3 worldNormal, float3 lightDirection)
 {
 	return saturate(dot(worldNormal, -lightDirection));
@@ -45,4 +46,13 @@ float ComputeBlinnPhong(float NdotL, float3 worldNormal, float3 lightDirection, 
     }
 
 	return specularPower;
+}
+
+// 림 라이트.
+float4 ComputeRimPower(float3 rimColor, float3 worldNormal, float3 cameraDirection, float rimConstant)
+{
+    float3 rim = saturate(dot(-cameraDirection, worldNormal));
+    rim = pow(1 - rim, rimConstant) * rimColor;
+	
+    return float4(rim, 1);
 }
